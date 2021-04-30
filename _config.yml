@@ -1,0 +1,114 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Eagle Rex
+subtitle: Dare to Soar
+author: Sebastien Rousseau
+lang: en
+locale: en-GB
+email: hello@eaglerex.com
+description: Eagle Rex description
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://eaglerex.com" # the base hostname & protocol for your site
+twitter_username: wwdseb
+github_username: sebastienrousseau
+facebook_username: wwdseb
+facebook_id: 10156052650356913
+linkedin_username: sebastienrousseau
+google_analytics: UA-112050664-1
+
+# Set the source folder
+source: source
+
+# Build settings
+encoding: utf-8
+repository: sebastienrousseau/eaglerex.com
+markdown: CommonMark
+commonmark:
+  options: ["SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table"]
+include:
+  - .htaccess
+  - assets
+  - _pages
+excerpt_separator: <!--more-->
+keep_files:
+  - .git
+exclude:
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .jekyll-cache
+  - .sass-cache
+  - .travis.yml
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - Capfile
+  - config
+  - Gemfile
+  - Gemfile.lock
+  - Gruntfile.js
+  - gulpfile.js
+  - log
+  - node_modules
+  - package.json
+  - Rakefile
+  - README
+  - README.md
+  - tmp
+  - vendor/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - yarn.lock
+compress_html:
+  blanklines: false
+  clippings: all
+  comments: all
+  endings: all
+  profile: true
+  startings: all
+plugins:
+    - jekyll-commonmark
+    - jekyll-include-cache
+    - jekyll-paginate
+    - jekyll-seo-tag
+    - jekyll-sitemap
+
+# # Jekyll configuration
+# # permalink: /:title
+# paginate: 5
+# paginate_path: "/page:num/"
+permalink: none
+timezone:  Europe/London
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+picture:
+  source: "assets/images/_fullsize"
+  output: "assets/images"
+assets:
+  plugins:
+    img: { optim: {}}
+  source_maps: false
+  sources:
+    - assets/fonts
+    - assets/icons
+    - assets/images
+    - assets/javascripts
+    - assets/stylesheets
+caching:
+  enabled: true
+  path: ".jekyll-cache/assets"
+  type: file # Possible values: memory, file
+compress:
+  css: '/assets/styles/*.css'
+  img: '/assets/**/*.{jpg,png}'
+  js: '/assets/js/*.js'

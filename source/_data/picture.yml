@@ -1,0 +1,31 @@
+# _data/picture.yml
+
+# These are used in several places. You likely want to enter whatever CSS media queries your site
+# uses here.
+media_queries:
+    mobile: 'max-width: 480px'
+    tablet: 'max-width: 768'
+    laptop: 'max-width: 1024px'
+    desktop: 'max-width: 1200'
+    wide: 'min-width: 1201'
+
+presets:
+  default:
+    formats: [webp, original] # Order matters!
+    format_quality:
+      jpg: 75
+      png: 65
+      webp: 55
+    strip_metadata: true
+    image_options:
+      avif:
+        compression: av1
+        speed: 8
+    widths: [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600] # Image widths, in pixels.
+    fallback_width: 800
+    fallback_format: original
+    data_sizes: true
+    size: 800px
+    loaded:
+        formats: [avif, jp2, webp, original]
+        dimension_attributes: true # Page reflow begone!

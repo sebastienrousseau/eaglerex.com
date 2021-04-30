@@ -1,0 +1,72 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+    <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+    {% include_cached head.html %}
+
+    <body itemscope itemtype="http://schema.org/WebPage">
+
+        <main class="container top text-center">
+            <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
+                <h1 class="logo" title="{{ site.title | escape }}">{{ site.title | escape }}</h1>
+            </a>
+        
+            <h2 title="{{ site.subtitle | escape }}"><em>{{ site.subtitle | escape }}</em></h2>
+        
+            <section class="introduction grid-flex">
+                <row class="flex-12 padding-1">                    
+                    <h3 class="home">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>
+                    
+                    <p><a href="https://www.zwiftpower.com/team.php?id=15793&do=join" class="button" alt="Join TEAM EAGLE REX" title="Join TEAM EAGLE REX">Join TEAM EAGLE REX</a></p>
+                </row>
+            </section>
+
+            <section class="grid-flex">
+                <row class="card flex-4 padding-1">
+                    <h4>Training Plans</h4>   
+                    {% picture training.png --alt Training Plans  %}            
+                    <p>Get full free access to all our Zwift performance training programs when you join Team EAGLE REX.</p>
+                </row>
+
+                <row class="card flex-4 padding-1">
+                    <h4>Workout Routines</h4>
+                    {% picture workouts.png --alt Workout Routines %}
+                    <p>Combine elements of CrossFit and Strength Training to achieve your ultimate goals, build on your strengths, target weaknesses and achieve peak performance.</strong></p>
+                </row>
+
+                <row class="card flex-4 padding-1">
+                    <h4>Free Zwift Resources</h4>
+                    {% picture free.png --alt Free Zwift Resources %}
+                    <p>Reach Your Physique Goals and Achieve Peak Performance.</p>
+                </row>
+                
+                <hr style="clear: both;visibility: hidden;" />
+
+                <row class="card flex-4 padding-1">
+                    <h4><a href="about.html">About Us</a></h4>
+                    {% picture us.png --alt About Us %}
+                    <p>A little bit about who we are, and what we try to be.</p>
+                </row>
+
+                <row class="card flex-4 padding-1">
+                    <h4>Facebook</h4>
+                    {% picture fb.png --alt Facebook %}
+                    <p>Our main Facebook group for questions, support and just sharing BXHERO love</p>
+                </row>
+
+                <row class="card flex-4 padding-1">
+                    <h4><a href="https://www.strava.com/clubs/eaglerex">Strava</a></h4>
+                    {% picture strava.png --alt Strava %}
+                    <p>Where herdlings strut their stuff</p>                    
+                </row>
+            
+                <hr style="clear: both;visibility: hidden;" />
+            </section>
+        </main>
+
+        {% include_cached footer.html %}
+
+    </body>
+</html>
