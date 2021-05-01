@@ -12,17 +12,21 @@
 title: Eagle Rex
 subtitle: Dare to Soar
 author: Sebastien Rousseau
+theme-color: "#000"
+background_color: "#fff"
 lang: en
-locale: en-GB
+locale: en_gb
 email: hello@eaglerex.com
 description: Eagle Rex description
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://eaglerex.com" # the base hostname & protocol for your site
-twitter_username: wwdseb
+twitter_username: eaglerex
+twitter_creator: wwdseb
 github_username: sebastienrousseau
-facebook_username: wwdseb
+author_facebook: eaglerex
+facebook_username: eaglerex
 facebook_id: 10156052650356913
-linkedin_username: sebastienrousseau
+linkedin_username: eaglerex
 google_analytics: UA-112050664-1
 
 # Set the source folder

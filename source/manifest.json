@@ -2,7 +2,7 @@
 layout: none
 ---
 {
-    "background_color": "#fff",
+    "background_color": "{{ site.background_color}}",
     "description": "{{ site.description }}",
     "display": "fullscreen",
     "lang": "{{ site.locale }}",
@@ -11,7 +11,7 @@ layout: none
     "start_url": "{{ site.url }}",
     "short_name": "{{ site.subtitle }}",
     "start_url": "/",
-    "theme_color": "#000",
+    "theme_color": "{{ site.theme-color}}",
     "icons": [
         {
             "purpose": "any maskable",

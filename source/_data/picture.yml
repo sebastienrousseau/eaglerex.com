@@ -1,31 +1,38 @@
 # _data/picture.yml
+fast_build: true
 
-# These are used in several places. You likely want to enter whatever CSS media queries your site
-# uses here.
 media_queries:
-    mobile: 'max-width: 480px'
-    tablet: 'max-width: 768'
-    laptop: 'max-width: 1024px'
-    desktop: 'max-width: 1200'
-    wide: 'min-width: 1201'
+    mobile: 'min-device-width : 320px'  # Smartphones, portrait iPhone, portrait 480x320 phones (Android) 
+    e-readers: 'min-width:481px'        # Portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide.
+    tablet-portrait: 'min-width:641px'  # Portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+    tablet-landscape: 'min-width:961px' # Tablet, landscape iPad, lo-res laptops ands desktops
+    laptop-desktop: 'min-width:1025px'  # Big landscape tablets, laptops, and desktops
+    high-resolution: 'min-width:1281px' # High-resolution laptops and desktops
 
 presets:
   default:
-    formats: [webp, original] # Order matters!
+    dimension_attributes: true
+    formats: [avif, jp2, webp, original] # Order matters!
+    widths: [50,100,150,200,250,500] # Image widths, in pixels.
     format_quality:
-      jpg: 75
-      png: 65
-      webp: 55
-    strip_metadata: true
+      webp: 90
+      avif: 90
+      jp2: 90
+    link_source: false
+    
+    webp:
+        formats: [webp, original]
+
+    avif:
+        formats: [avif, webp, original]
+
     image_options:
       avif:
         compression: av1
         speed: 8
-    widths: [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600] # Image widths, in pixels.
-    fallback_width: 800
+    fallback_width: 500
     fallback_format: original
     data_sizes: true
-    size: 800px
     loaded:
         formats: [avif, jp2, webp, original]
-        dimension_attributes: true # Page reflow begone!
+        dimension_attributes: true

@@ -1,18 +1,21 @@
 ---
 layout: page
-title: Workout Routines
-description: Sebastien Rousseau is a Blockchain, Banking & Financial Services development consultant based in London, UK.
+title: Eagle Rex Cycling Club - Workout Routines
+description: Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.
+keywords: eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk
+image: /assets/images/logo.png
+author: Sebastian Rousseau
 permalink: /workout-routines.html
-categories: []
-tags: [blockchain, banking, financial services, development, consultancy, london]
+categories: [cycling club]
+tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
 status: publish
 type: page
 published: true
-meta: { sebastien rousseau, solution architect and engineer lead, specialised in blockchain, banking, financial services, london}
+meta: { eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk}
+date: May 1, 2021 
+robots: all
 ---
-
-
-Hello and welcome to the Eagle Rex Cycling Club!
+#### Hello and welcome to the Eagle Rex Cycling Club!
 
 This club is for everyone who wants to stay active, keep fit, support their own health, well-being and remain in good shape.
 

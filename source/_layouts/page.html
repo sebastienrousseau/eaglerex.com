@@ -1,21 +1,28 @@
 ---
 layout: compress
 ---
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<!DOCTYPE html>
+    <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-    {% include_cached head.html %}
+    {% include head.html %}
 
     <body itemscope itemtype="http://schema.org/WebPage">
 
         <main class="container top text-center">
-            <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
-                <h1 class="logo" title="{{ site.title | escape }}">{{ site.title | escape }}</h1>
-            </a>
-            
+        
+            <h1 class="logo">
+                <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
+                    {% picture logo.png --img class="logo" --alt {{ site.title | escape }} %}  
+                </a>    
+                <span>
+                    {{ site.title | escape }}
+                </span>                
+            </h1>
+                        
             <h2 title="{{ site.subtitle | escape }}"><em>{{ site.subtitle | escape }}</em></h2>
             
             <section class="introduction grid-flex">
-                <row class="flex-12 padding-1">                    
+                <row class="flex-1 padding-1">                    
                     <h3 class="home">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>
                     
                     <p><a href="https://www.zwiftpower.com/team.php?id=15793&do=join" class="button"alt="Join TEAM EAGLE REX" title="Join TEAM EAGLE REX">Join TEAM EAGLE REX</a></p>

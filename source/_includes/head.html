@@ -1,62 +1,24 @@
-<head>
+<head>  
+    <title>{%if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 
-  <meta charset="utf-8">
+    <!-- Metatags -->
+    {% include metatags.html %}
 
-  <title>
-    {%if page.title %}
-      {{ page.title | escape }}
-    {% else %}
-      {{ site.title | escape }}
-    {% endif %}
-  </title>
-
-  <!-- Metatags -->
-  {% include_cached metatags.html %}
-
-  <link rel="alternate" href="{{ site.url }}" hreflang="{{ site.locale }}" />
+    <!-- Links -->
+    <link rel="alternate" href="{{ site.url }}" hreflang="{{ site.lang }}" />
     <link rel="manifest" href="/manifest.json">
-  <!-- CSS -->
-
-  <!-- {% assign style_css = site.data.css-manifest['eaglerex.css'] | default: 'eaglerex.css' | prepend: 'assets/stylesheets/' | relative_url %} 
-  <meta name="fullcss" content="{{ style_css }}"> -->
-
-
-
-
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/stylesheets/eaglerex.css" media="all" />
-    
     <link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-fonts.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-fonts.min.css"></noscript>
-<link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-colours.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-colours.min.css"></noscript>
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"></noscript>
-
-
-<link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-animations.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-animations.min.css"></noscript>
-
-<link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic.min.css"></noscript>
+    <noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-fonts.min.css"></noscript>
+    <link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-colours.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-colours.min.css"></noscript>
+    <link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic.min.css"></noscript>
     
-  <!--   
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-fonts.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-colours.min.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ site_url }}/favicon.ico" >
+    <link rel="apple-touch-icon" href="{{ site_url }}/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-animations.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic.min.css" />
-
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
--->
-
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{ site_url }}/favicon.ico" >
-  <link rel="apple-touch-icon" href="{{ site_url }}/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/atom.xml" | site_url }}">
-
-
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/atom.xml" | site_url }}">
 </head>
