@@ -25,6 +25,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ site_url }}/favicon.ico" >
     <link rel="apple-touch-icon" href="{{ site_url }}/favicon.ico">
 
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/atom.xml" | site_url }}">
+    <!-- RSS / Atom -->
+    <link rel="alternate" type="application/rss+xml" href="{{ site_url }}/feed.xml" />
+    <link rel="alternate" type="application/atom+xml" href="{{ site_url }}/atom.xml" />
+    
 </head>

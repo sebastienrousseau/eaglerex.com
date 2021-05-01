@@ -1,12 +1,13 @@
 ---
 layout: page
+id: 8363a1c4-a342-4f2c-99f8-f8a512e8bdea
 title: Eagle Rex Cycling Club - Workout Routines
 description: Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.
 keywords: eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk
 image: /assets/images/logo.png
 author: Sebastian Rousseau
 permalink: /workout-routines.html
-categories: [cycling club]
+categories: [EagleRex]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
 status: publish
 type: page

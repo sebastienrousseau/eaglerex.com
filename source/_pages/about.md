@@ -1,12 +1,13 @@
 ---
 layout: page
+id: a224ed2b-a6b9-4a0f-92dd-9c8960a82dcd
 title: Eagle Rex Cycling Club - About Us
 description: Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.
 keywords: eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk
 image: /assets/images/logo.png
 author: Sebastian Rousseau
 permalink: /about.html
-categories: [cycling club]
+categories: [EagleRex]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
 status: publish
 type: page

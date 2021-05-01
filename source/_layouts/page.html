@@ -4,7 +4,7 @@ layout: compress
 <!DOCTYPE html>
     <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-    {% include head.html %}
+    {% include_cached head.html %}
 
     <body itemscope itemtype="http://schema.org/WebPage">
 
@@ -31,10 +31,10 @@ layout: compress
         
             <section class="about grid-flex">
                 <row class="flex-1 padding-1 text-left color-white">
-                    {{ content }}
-                    <hr style="clear: both;visibility: hidden;" />
-                </row>
+                    {{ content }}                    
+                </row>                
             </section>
+                
         </main>
 
     {% include_cached footer.html %}

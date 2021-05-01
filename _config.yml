@@ -81,8 +81,11 @@ compress_html:
   endings: all
   profile: true
   startings: all
-plugins:
+feed:
+  path: atom.xml
+  plugins:
     - jekyll-commonmark
+    - jekyll-feed
     - jekyll-include-cache
     - jekyll-minifier
     - jekyll-paginate
@@ -93,7 +96,7 @@ plugins:
 # # permalink: /:title
 # paginate: 5
 # paginate_path: "/page:num/"
-permalink: none
+# permalink: none
 timezone:  Europe/London
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 picture:

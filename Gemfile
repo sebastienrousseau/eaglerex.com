@@ -12,6 +12,7 @@ gem 'webrick'
 group :jekyll_plugins do
     gem 'jekyll-assets'
     gem 'jekyll-commonmark'
+    gem 'jekyll-feed'
     gem 'jekyll-include-cache'
     gem 'jekyll-minifier'
     gem 'jekyll-paginate'
