@@ -7,7 +7,13 @@
     <!-- Links -->
     <link rel="alternate" href="{{ site.url }}" hreflang="{{ site.lang }}" />
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/stylesheets/eaglerex.css" media="all" />
+    
+    <!-- Inline critical css -->
+    <style type="text/css">
+        {% include eaglerex.css %}
+    </style>
+
+    <!--link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/stylesheets/eaglerex.css" media="all" /-->
     <link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-fonts.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-fonts.min.css"></noscript>
     <link rel="preload" href="https://unpkg.com/skeletonic@1.1.1/dist/skeletonic-colours.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">

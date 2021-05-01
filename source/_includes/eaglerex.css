@@ -7,30 +7,50 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-size: 21px;
-    font-weight: 400;
-    color:#fff;    
 }
+
+p {
+    font-size: 21px;
+    line-height: 1.381;
+    font-weight: 400;
+    letter-spacing: .011em;
+    color:#fff;
+}
+
+h4 a, h4 a:link, h4 a:visited, h4 a:focus  {
+    text-transform: uppercase;
+    color:#fff;
+}
+
+
+p a:link, p a:visited {
+    color:#3cb9fc;
+}
+
+p a:active,p a:hover {
+    color:#3cb9fc;
+}
+
+p a:focus {
+    color:#fff;
+}
+  
 h2 {
     color:#fff;
 }
-h3{
-    font-size: 3.6rem;
-    font-weight: 500;
+
+img:hover
+{
+     opacity: 0.1;
+     filter: alpha(opacity=30);
 }
-a:visited { color:#fff;}
 section {
     border-radius: 30px;
 }
 
-section.introduction {
-    background-color:#120052 ;    
-    background: linear-gradient(to right top, #120052 0%, #33274f 50%, #3cb9fc 100%);    
-}
-
 section.about {
-    background-color:#124d86;
-    background: linear-gradient(150deg, #124d86 0%, #14204e 100%);
+    background-color:#120052;
+    background: linear-gradient(150deg, #120052 0%, #33274f 50%, #3cb9fc 100%);
 }
 h3.home {
     color: #fff;
@@ -42,15 +62,16 @@ h3.home {
 }
 
 row.card {
-    background-color:#124d86;
-    background: linear-gradient(150deg, #124d86 0%, #14204e 100%);
+    background-color:#120052;
+    background: linear-gradient(150deg, #120052 0%, #33274f 50%, #3cb9fc 100%);
     border-radius: 30px;
     border: 3px solid #fff;
     color:#fff;
+    min-width: 300px;
 }
 
 row.card img {
-    max-width: 250px;
+    max-width: 125px;
 }
 
 a.button,
@@ -61,8 +82,7 @@ a.button:visited,
 button:link,
 button:visited {
     font-weight: 500;
-    background-color: rgba(60,185,252,1);
-    background-image: linear-gradient(to right top,  rgba(60,185,252,1) 11.2%, rgba(0,86,131,1) 91.1% );
+    background-color: #120052;
     border-radius: 30px;
     border: 2px solid #fff;
     color: #fff;
@@ -74,8 +94,7 @@ button:visited {
 a.button:hover,
 [type=submit]:hover,
 button:hover {
-    background-color: rgba(0,86,131,1);
-    background-image: linear-gradient(to left bottom,  rgba(60,185,252,1) 11.2%, rgba(0,86,131,1) 91.1% );
+    background-color: #3cb9fc;
     border-radius: 990px;
     border: 2px solid #fff;
     color: #fff;
@@ -90,13 +109,3 @@ h1.logo img {
 h1.logo span {
     display: none;
 }
-
-/* h1.logo {
-    background-color:transparent;
-    background: url(/assets/images/logo.png) no-repeat;
-    color: #fff;
-    font-size: 1px;
-    height: 211px;
-    margin: 20px auto;
-    width: 258px;
-} */
