@@ -84,6 +84,7 @@ compress_html:
 plugins:
     - jekyll-commonmark
     - jekyll-include-cache
+    - jekyll-minifier
     - jekyll-paginate
     - jekyll-seo-tag
     - jekyll-sitemap

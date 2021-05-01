@@ -4,14 +4,16 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem "jekyll"
-gem "liquid-c"
+gem 'jekyll'
+gem 'html-proofer'
+gem 'liquid-c'
 gem 'webrick'
 
 group :jekyll_plugins do
     gem 'jekyll-assets'
     gem 'jekyll-commonmark'
     gem 'jekyll-include-cache'
+    gem 'jekyll-minifier'
     gem 'jekyll-paginate'
     gem 'jekyll_picture_tag'
     gem 'jekyll-seo-tag'    
