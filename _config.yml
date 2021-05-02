@@ -71,6 +71,12 @@ responsive_image:
     - width: 1025
     - width: 1281
     - width: 2561
+  default_quality: 90
+  trip: true
+  base_path: assets/images/originals
+  extra_images:
+    - assets/icons/*.{jpeg,jpg}
+  cache: true
   output_path_format: assets/images/%{width}/%{basename}
 
 commonmark:

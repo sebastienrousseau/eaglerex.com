@@ -11,8 +11,11 @@ layout: compress
         <main class="container top text-center">
         
             <h1 class="logo">
-                <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
-                    {% responsive_image path: assets/images/logo.png alt: "{{ site.title | escape }}" %}  
+                <a href="{{ " / " | site_url }}" title="{{ site.title | escape }}">
+                    {% responsive_image_block %}
+                    path: assets/images/originals/logo.png  
+                    alt: {{ site.title | escape }}
+                    {% endresponsive_image_block %}                                        
                 </a>    
                 <span>
                     {{ site.title | escape }}
