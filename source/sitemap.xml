@@ -7,7 +7,7 @@ layout: none
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>{{ site.url }}</loc>
-        <lastmod>{{ site.time | %F }}</lastmod>
+        <lastmod>{{ site.time | date: "%F" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>

@@ -1,0 +1,33 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+    <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+    {% include head.html %}
+
+    <body itemscope itemtype="http://schema.org/WebPage">
+
+        <main class="container top text-center">
+        
+            <h1 class="logo">
+                <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
+                    {% picture logo.png --img class="logo" --alt {{ site.title | escape }} %}  
+                </a>    
+                <span>
+                    {{ site.title | escape }}
+                </span>                
+            </h1>
+                        
+            <section class="grid-flex">
+                <row class="flex-1 padding-1">  
+            {{ content }}   
+              </row>
+            </section>                 
+                
+        </main>
+
+    {% include footer.html %}
+
+    </body>
+</html>

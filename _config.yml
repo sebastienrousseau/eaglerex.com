@@ -1,12 +1,7 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# _config.yml
+# bundle exec jekyll build -v
+# (bundle exec) jekyll serve
+# JEKYLL_GITHUB_TOKEN=********** jekyll serve
 
 # Site settings
 title: Eagle Rex
@@ -36,9 +31,60 @@ source: source
 encoding: utf-8
 repository: sebastienrousseau/eaglerex.com
 markdown: CommonMark
+
+# Installed plugins 
+plugins:
+  - jekyll-commonmark
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-minifier
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Plugins settings
+
+compress_html:
+  blanklines: false
+  clippings: all
+  comments: all
+  endings: all
+  profile: true
+  startings: all
+
+feed:
+  path: atom.xml
+
+picture:
+  source: "assets/images/_fullsize"
+  output: "assets/images"
+
 commonmark:
   options: ["SMART", "FOOTNOTES"]
-  extensions: ["strikethrough", "autolink", "table"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+
+assets:
+  plugins:
+    css: { autoprefixer: {}}
+    img: { optim: {}}
+  source_maps: true
+  compression: false
+  gzip: false  
+  sources:
+    - assets/fonts
+    - assets/icons
+    - assets/images
+    - assets/javascripts
+    - assets/stylesheets
+  caching:
+    enabled: true
+    path: ".jekyll-cache/assets"
+    type: file # Possible values: memory, file
+  compress:
+    css: '/assets/styles/*.css'
+    img: '/assets/**/*.{jpg,png}'
+    js: '/assets/js/*.js'
+
 include:
   - .htaccess
   - assets
@@ -74,49 +120,3 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - yarn.lock
-compress_html:
-  blanklines: false
-  clippings: all
-  comments: all
-  endings: all
-  profile: true
-  startings: all
-feed:
-  path: atom.xml
-  plugins:
-    - jekyll-commonmark
-    - jekyll-feed
-    - jekyll-include-cache
-    - jekyll-minifier
-    - jekyll-paginate
-    - jekyll-seo-tag
-    - jekyll-sitemap
-
-# # Jekyll configuration
-# # permalink: /:title
-# paginate: 5
-# paginate_path: "/page:num/"
-# permalink: none
-timezone:  Europe/London
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-picture:
-  source: "assets/images/_fullsize"
-  output: "assets/images"
-assets:
-  plugins:
-    img: { optim: {}}
-  source_maps: false
-  sources:
-    - assets/fonts
-    - assets/icons
-    - assets/images
-    - assets/javascripts
-    - assets/stylesheets
-caching:
-  enabled: true
-  path: ".jekyll-cache/assets"
-  type: file # Possible values: memory, file
-compress:
-  css: '/assets/styles/*.css'
-  img: '/assets/**/*.{jpg,png}'
-  js: '/assets/js/*.js'
