@@ -11,7 +11,7 @@ layout: compress
         <main class="container top text-center">
             <h1 class="logo">
                 <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
-                    {% picture logo.png --img class="logo" --alt {{ site.title | escape }} %}  
+                    {% responsive_image path: assets/images/logo.png alt: "{{ site.title | escape }}" %}
                 </a>    
                 <span>
                     {{ site.title | escape }}
@@ -32,7 +32,7 @@ layout: compress
                 <row class="card flex-1 padding-1">
                     <h4><a href="/training-plans.html" title="Training Plans">Training Plans</a></h4>
                     <a href="/training-plans.html" title="Training Plans">
-                        {% picture training.png --alt Training Plans  %}
+                        {% responsive_image path: assets/images/training.png alt: "Training Plans" %}                        
                     </a>               
                     <p>Get full free access to all our Zwift performance training programs when you join Team EAGLE REX.</p>
                 </row>
@@ -40,7 +40,7 @@ layout: compress
                 <row class="card flex-1 padding-1">
                     <h4><a href="/workout-routine.html" title="Workout Routines">Workout Routines</a></h4>
                     <a href="/workout-routine.html" title="Workout Routines">
-                    {% picture workouts.png --alt Workout Routines %}
+                    {% responsive_image path: assets/images/workouts.png alt: "Workout Routines" %}
                     </a>
                     <p>Combine elements of CrossFit and Strength Training to achieve your ultimate goals, build on your strengths, target weaknesses and achieve peak performance.</strong></p>
                 </row>
@@ -48,7 +48,7 @@ layout: compress
                 <row class="card flex-1 padding-1">
                     <h4><a href="/free-zwift-resources.html" title="Free Zwift Resources">Free Zwift Resources</a></h4>
                     <a href="/free-zwift-resources.html" title="Free Zwift Resources">
-                    {% picture free.png --alt Free Zwift Resources %}
+                    {% responsive_image path: assets/images/free.png alt: "Free Zwift Resource" %}                    
                     </a>
                     <p>Reach Your Physique Goals and Achieve Peak Performance.</p>
                 </row>
@@ -56,7 +56,7 @@ layout: compress
                 <row class="card flex-1 padding-1">
                     <h4><a href="/about.html" title="About Us">About Us</a></h4>
                     <a href="/about.html" title="About Us">
-                    {% picture us.png --alt About Us %}
+                    {% responsive_image path: assets/images/us.png alt: "About Us" %}
                     </a>
                     <p>A little bit about who we are, and what we try to be.</p>
                 </row>
@@ -64,7 +64,7 @@ layout: compress
                 <row class="card flex-1 padding-1">
                     <h4><a href="/" title="Facebook">Facebook</a></h4>
                     <a href="/" title="Facebook">
-                    {% picture fb.png --alt Facebook %}
+                    {% responsive_image path: assets/images/fb.png alt: "Facebook" %}
                     </a>
                     <p>Our main Facebook group for questions, support and just sharing BXHERO love</p>
                 </row>
@@ -72,7 +72,7 @@ layout: compress
                 <row class="card flex-1 padding-1">
                     <h4><a href="https://www.strava.com/clubs/eaglerex" title="Strava">Strava</a></h4>
                     <a href="https://www.strava.com/clubs/eaglerex" title="Strava">
-                    {% picture strava.png --alt Strava %}
+                    {% responsive_image path: assets/images/strava.png alt: "Strava" %}                    
                     </a>
                     <p>Where herdlings strut their stuff</p>                    
                 </row>

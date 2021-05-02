@@ -12,7 +12,7 @@ layout: compress
         
             <h1 class="logo">
                 <a href="{{ " / " | site_url }}" alt="{{ site.title | escape }}">
-                    {% picture logo.png --img class="logo" --alt {{ site.title | escape }} %}  
+                    {% responsive_image path: assets/images/logo.png alt: "{{ site.title | escape }}" %}                
                 </a>    
                 <span>
                     {{ site.title | escape }}

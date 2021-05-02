@@ -4,10 +4,10 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'jekyll'
 gem 'html-proofer'
-gem "image_optim"
-gem "image_optim_pack" # Optional
+gem 'image_optim_pack' # Optional
+gem 'image_optim'
+gem 'jekyll'
 gem 'liquid-c'
 gem 'webrick'
 
@@ -18,7 +18,7 @@ group :jekyll_plugins do
     gem 'jekyll-include-cache'
     gem 'jekyll-minifier'
     gem 'jekyll-paginate'
-    gem 'jekyll_picture_tag'
+    gem 'jekyll-responsive-image'
     gem 'jekyll-seo-tag'    
     gem 'jekyll-sitemap'    
 end

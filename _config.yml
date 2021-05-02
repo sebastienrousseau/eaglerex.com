@@ -42,6 +42,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-minifier
   - jekyll-paginate
+  - jekyll-responsive-image
   - jekyll-seo-tag
   - jekyll-sitemap
 
@@ -58,9 +59,19 @@ compress_html:
 feed:
   path: atom.xml
 
-picture:
-  source: "assets/images/_fullsize"
-  output: "assets/images"
+# Responsive images
+responsive_image:
+  template: _includes/image-srcset.html
+  sizes:
+    - width: 240
+    - width: 320
+    - width: 481
+    - width: 641
+    - width: 961
+    - width: 1025
+    - width: 1281
+    - width: 2561
+  output_path_format: assets/images/%{width}/%{basename}
 
 commonmark:
   options: ["SMART", "FOOTNOTES"]
