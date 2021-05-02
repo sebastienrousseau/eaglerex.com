@@ -8,6 +8,7 @@ author: Sebastian Rousseau
 permalink: /privacy.html
 categories: [cycling club]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
+section: privacy
 status: publish
 type: page
 published: true

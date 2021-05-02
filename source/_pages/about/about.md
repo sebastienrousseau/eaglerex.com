@@ -8,6 +8,7 @@ image: /assets/images/logo.png
 author: Sebastian Rousseau
 permalink: /about.html
 categories: [EagleRex]
+section: about
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
 status: publish
 type: page

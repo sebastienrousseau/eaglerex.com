@@ -1,8 +1,8 @@
 ---
 layout: compress
-permalink: /workout-routines.json
+permalink: /privacy.json
 ---
-{% assign subpage = site.pages | where: 'section', 'workout-routines' %}
+{% assign subpage = site.pages | where: 'section', 'privacy' %}
 [
     {
         "status": "ok",

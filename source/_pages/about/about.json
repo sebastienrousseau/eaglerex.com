@@ -1,21 +1,8 @@
 ---
 layout: compress
-id: a224ed2b-a6b9-4a0f-92dd-9c8960a82dcd
-title: Eagle Rex Cycling Club - About Us
-description: Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.
-keywords: eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk
-image: /assets/images/logo.png
-author: Sebastian Rousseau
 permalink: /about.json
-categories: [EagleRex]
-tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
-status: publish
-type: page
-published: true
-meta: { eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk}
-date: May 1, 2021 
-robots: all
 ---
+{% assign subpage = site.pages | where: 'section', 'about' %}
 [
     {
         "status": "ok",
@@ -25,14 +12,14 @@ robots: all
             {
                 "results": [
                     {
-                        "authors": "{{ page.author | escape }}",
-                        "date": "{{ page.date }}",
-                        "description": "{{ page.description | escape }}",
-                        "id" : "{{ page.id }}",
-                        "image": "{{ page.image | escape }}",
-                        "keywords": "{{ page.keywords | escape }}",
-                        "title": "{{ page.title | escape }}",
-                        "url": "{{ page.url }}",
+                        "authors": "{{ subpage[0].author | escape }}",
+                        "date": "{{ subpage[0].date }}",
+                        "description": "{{ subpage[0].description | escape }}",
+                        "id" : "{{ subpage[0].id }}",
+                        "image": "{{ subpage[0].image | escape }}",
+                        "keywords": "{{ subpage[0].keywords | escape }}",
+                        "title": "{{ subpage[0].title | escape }}",
+                        "url": "{{ subpage[0].url }}",
                     }
                 ]
             }

@@ -9,6 +9,7 @@ author: Sebastian Rousseau
 permalink: /training-plans.html
 categories: [EagleRex]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
+section: training-plans
 status: publish
 type: page
 published: true

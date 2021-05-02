@@ -8,6 +8,7 @@ author: Sebastian Rousseau
 permalink: /terms.html
 categories: [cycling club]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
+section: terms
 status: publish
 type: page
 published: true

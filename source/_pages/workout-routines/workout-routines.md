@@ -9,6 +9,7 @@ author: Sebastian Rousseau
 permalink: /workout-routines.html
 categories: [EagleRex]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
+section: workout-routines
 status: publish
 type: page
 published: true
