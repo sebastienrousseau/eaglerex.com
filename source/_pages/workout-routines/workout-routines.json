@@ -19,7 +19,7 @@ permalink: /workout-routines.json
                         "image": "{{ subpage[0].image | escape }}",
                         "keywords": "{{ subpage[0].keywords | escape }}",
                         "title": "{{ subpage[0].title | escape }}",
-                        "url": "{{ subpage[0].url }}",
+                        "url": "{{ subpage[0].url }}"
                     }
                 ]
             }

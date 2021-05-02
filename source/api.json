@@ -21,7 +21,7 @@ permalink: /api.json
                         "image": "{{ page.image | escape }}",
                         "keywords": "{{ page.keywords | escape }}",
                         "title": "{{ page.title | escape }}",
-                        "url": "{{ page.url }}",
+                        "url": "{{ page.url }}"
                     }{% if forloop.last %}{% else %},{% endif %}
                     {% endif %}{% endfor %}                
                 ]
