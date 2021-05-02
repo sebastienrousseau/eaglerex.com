@@ -1,28 +1,29 @@
 ---
 layout: page
 id: 8363a1c4-a342-4f2c-99f8-f8a512e8bdea
-title: Eagle Rex Cycling Club - Workout Routines
-description: Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.
-keywords: eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk
+title: Workout Routines - Eagle Rex Cycling Club
+description: Our cyclist expert has put together workouts that you can download and use whenever you like.
+keywords: eagle rex, cycling club, workout routines, zwift workouts
 image: /assets/images/logo.png
 author: Sebastian Rousseau
 permalink: /workout-routines.html
 categories: [EagleRex]
-tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
+tags: [eagle rex, cycling club, workout routines, zwift workouts]
 section: workout-routines
 status: publish
 type: page
 published: true
-meta: { eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk}
+meta: { eagle rex, cycling club, workout routines, zwift workouts }
 date: May 1, 2021 
 robots: all
 ---
-#### Hello and welcome to the Eagle Rex Cycling Club!
+#### Eagle Rex Cycling Workouts
+##### A guide on how to download your Zwift workouts from the Eagle Rex Cycling Club and add them to your Zwift account.
 
-This club is for everyone who wants to stay active, keep fit, support their own health, well-being and remain in good shape.
+Our cyclist expert has put together workouts that you can download and use whenever you like.
 
-Whether it's road cycling, indoor cycling, mountain biking, BMX, cyclocross, tandem cycling, track there are endless options for fun-filled fitness adventures.
+Copy the downloaded workout files to the Zwift/Workouts folder in your Documents folder.
 
-Our aim is to inspire you to help achieve your goals - whatever they might be.Please ensure to give a Ride On to our fellow Zwifters to cheer them on and use our tag [EAGLEREX] after your name.
+You will find this by clicking in to your Document folder, then Zwift, then Workouts folder and then finally the folder with the “Numeric Zwift ID”. (File path is Documents\Zwift\Workouts\”Numeric Zwift ID”)
 
-Enjoy!
+
