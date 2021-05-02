@@ -61,21 +61,13 @@ feed:
 
 # Responsive images
 responsive_image:
-  template: _includes/image-srcset.html
+  template: _includes/responsive-image.html
   sizes:
-    - width: 240
-    - width: 320
-    - width: 481
-    - width: 641
-    - width: 961
-    - width: 1025
-    - width: 1281
-    - width: 2561
-  default_quality: 90
-  trip: true
-  base_path: assets/images/originals
-  extra_images:
-    - assets/icons/*.{jpeg,jpg}
+    - width: 500
+    - width: 250
+    - width: 125     
+  strip: true
+  base_path: assets/images/image-icon
   cache: true
   output_path_format: assets/images/%{width}/%{basename}
 
@@ -87,7 +79,7 @@ assets:
   plugins:
     css: { autoprefixer: {}}
     img: { optim: {}}
-  source_maps: true
+  source_maps: false
   compression: false
   gzip: false  
   sources:
