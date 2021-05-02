@@ -1,20 +1,23 @@
 # _config.yml
-# bundle exec jekyll build -v
-# (bundle exec) jekyll serve
-# JEKYLL_GITHUB_TOKEN=********** jekyll serve
+
+# bundle exec jekyll build
+# bundle exec jekyll clean 
+# bundle exec jekyll serve
 
 # Site settings
 title: Eagle Rex
 subtitle: Dare to Soar
-author: Sebastien Rousseau
+description: Eagle Rex description
+author: Sebastian Rousseau
 theme-color: "#000"
 background_color: "#fff"
 lang: en
 locale: en_gb
 email: hello@eaglerex.com
-description: Eagle Rex description
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://eaglerex.com" # the base hostname & protocol for your site
+
+# Social Media settings
 twitter_username: eaglerex
 twitter_creator: wwdseb
 github_username: sebastienrousseau
@@ -61,7 +64,7 @@ picture:
 
 commonmark:
   options: ["SMART", "FOOTNOTES"]
-  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+  extensions: ["strikethrough", "autolink", "table"]
 
 assets:
   plugins:

@@ -34,7 +34,6 @@ h1.logo img
 	margin:20px auto;
 	width:250px;
 }
-
 h1.logo span
 {
 	display:none;
@@ -52,6 +51,21 @@ h3.home
 	text-align:center;
 }
 
+row h4 {
+    font-size: 28px;
+    font-weight: 900;    
+}
+
+row h5 {
+    font-size: 24px;
+    font-weight: 600;    
+}
+
+row h6 {
+    font-size: 21px;
+    font-weight: 300;    
+}
+
 h4 a,h4 a:link,h4 a:visited,h4 a:focus
 {
 	color:#fff;
@@ -64,7 +78,7 @@ img:hover
 	opacity:.1;
 }
 
-p
+p, li
 {
 	color:#fff;
 	font-size:21px;
@@ -112,4 +126,5 @@ section.about
 {
 	background:linear-gradient(150deg,#120052 0%,#33274f 50%,#3cb9fc 100%);
 	background-color:#120052;
+    opacity: 0.90;
 }
