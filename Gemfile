@@ -5,8 +5,8 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'html-proofer'
-gem 'image_optim_pack' # Optional
 gem 'image_optim'
+gem 'image_optim_pack' # Optional
 gem 'jekyll'
 gem 'liquid-c'
 gem 'webrick'
