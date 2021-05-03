@@ -98,9 +98,9 @@ assets:
     path: ".jekyll-cache/assets"
     type: file # Possible values: memory, file
   compress:
-    css: '/assets/styles/*.css'
-    img: '/assets/**/*.{jpg,png}'
-    js: '/assets/js/*.js'
+    css: "/assets/styles/*.css"
+    img: "/assets/**/*.{jpg,png}"
+    js: "/assets/js/*.js"
 
 include:
   - .htaccess
