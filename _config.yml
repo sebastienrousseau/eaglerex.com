@@ -46,7 +46,6 @@ plugins:
   - jekyll-sitemap
 
 # Plugins settings
-
 compress_html:
   blanklines: false
   clippings: all

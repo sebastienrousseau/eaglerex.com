@@ -19,5 +19,5 @@ group :jekyll_plugins do
     gem 'jekyll-paginate'
     gem 'jekyll-responsive-image'
     gem 'jekyll-seo-tag'    
-    gem 'jekyll-sitemap'    
+    gem 'jekyll-sitemap'
 end
