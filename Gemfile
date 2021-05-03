@@ -18,5 +18,5 @@ group :jekyll_plugins do
   gem 'jekyll-responsive-image'
   gem 'jekyll-seo-tag'
   gem 'jekyll-sitemap'
-  gem 'rubocop', '~> 1.10'
+  gem 'rubocop', '~> 0.82.0'
 end
