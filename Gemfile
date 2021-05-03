@@ -18,6 +18,6 @@ group :jekyll_plugins do
     gem 'jekyll-minifier'
     gem 'jekyll-paginate'
     gem 'jekyll-responsive-image'
-    gem 'jekyll-seo-tag'    
+    gem 'jekyll-seo-tag'
     gem 'jekyll-sitemap'
 end
