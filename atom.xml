@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Eagle Rex</title>
+		<description>Eagle Rex description</description>		
+		<link>https://eaglerex.com</link>
+		<atom:link href="https://eaglerex.com/feed.xml" rel="self" type="application/rss+xml" />
+		
+            
+		
+            
+		
+            
+                <item>
+                    <title>Eagle Rex Cycling Club - About Us</title>
+                    <description>Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.</description>
+                    <pubDate>Sat, 01 May 2021 00:00:00 +0100</pubDate>
+                    <link>https://eaglerex.com/about.html</link>
+                    <guid isPermaLink="true">https://eaglerex.com/about.html</guid>
+                </item>
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+		
+            
+                <item>
+                    <title>Training Plans - Eagle Rex Cycling Club Online Programs</title>
+                    <description>We have designed our program to enhance your fitness competency, strengthen your cardiorespiratory endurance using a combination of cycling training sessions, strength and conditioning exercises combined with high-intensity CrossFit workouts.</description>
+                    <pubDate>Sat, 01 May 2021 00:00:00 +0100</pubDate>
+                    <link>https://eaglerex.com/training-plans.html</link>
+                    <guid isPermaLink="true">https://eaglerex.com/training-plans.html</guid>
+                </item>
+            
+		
+            
+		
+            
+                <item>
+                    <title>Workout Routines - Eagle Rex Cycling Club</title>
+                    <description>Our cyclist expert has put together workouts that you can download and use whenever you like.</description>
+                    <pubDate>Sat, 01 May 2021 00:00:00 +0100</pubDate>
+                    <link>https://eaglerex.com/workout-routines.html</link>
+                    <guid isPermaLink="true">https://eaglerex.com/workout-routines.html</guid>
+                </item>
+            
+		
+	</channel>
+</rss>
