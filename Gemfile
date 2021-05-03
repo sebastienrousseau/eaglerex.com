@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-git_source(:github) { |repo_name| 'https://github.com/#{repo_name}' }
-
 gem 'html-proofer'
 gem 'image_optim'
 gem 'image_optim_pack' # Optional
@@ -20,5 +18,5 @@ group :jekyll_plugins do
   gem 'jekyll-responsive-image'
   gem 'jekyll-seo-tag'
   gem 'jekyll-sitemap'
-  gem 'rubocop','~> 1.10'
+  gem 'rubocop', '~> 1.10'
 end
