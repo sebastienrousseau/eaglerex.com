@@ -19,13 +19,7 @@ robots: all
 ---
 #### Eagle Rex Cycling Club Online Programs
 
-{% assign path = 'assets/images/backgrounds/bg-training.png' %}
-
-{% responsive_image_block %}
-  path: {{ path }}
-  alt: {{ page.title  }}
-  title: {{ page.title  }}  
-{% endresponsive_image_block %}
+{% responsive_image path: assets/images/backgrounds/bg-training.png alt: "Training Plans - Eagle Rex Cycling Club Online Programs" title: "Training Plans - Eagle Rex Cycling Club Online Programs" %}     
 ##### Find a World-Class Program That Suits Your Needs
 
 We have designed our program to enhance your fitness competency, strengthen your cardiorespiratory endurance using a combination of cycling training sessions, strength and conditioning exercises combined with high-intensity CrossFit workouts.

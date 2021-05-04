@@ -19,13 +19,7 @@ robots: all
 ---
 #### Eagle Rex Cycling Workouts
 
-{% assign path = 'assets/images/backgrounds/bg-workouts.png' %}
-
-{% responsive_image_block %}
-  path: {{ path }}
-  alt: {{ page.title  }}
-  title: {{ page.title  }}  
-{% endresponsive_image_block %}
+{% responsive_image path: assets/images/backgrounds/bg-workouts.png alt: "Workout Routines - Eagle Rex Cycling Club" title: "Workout Routines - Eagle Rex Cycling Club" %}     
 
 Our cyclist expert has put together workouts that you can download and use whenever you like.
 
