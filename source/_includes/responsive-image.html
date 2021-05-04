@@ -3,4 +3,4 @@
         /{{ i.path }} {{ i.width }}w,
     {% endfor %}
 {% endcapture %}
-<img src="/{{ path }}" alt="{{ alt }}" srcset="{{ srcset | strip_newlines }}" width="100%" height="100%" />
+<img src="/{{ path }}" alt="{{ alt }}" title="{{ title }}" srcset="{{ srcset | strip_newlines }}" width="{{ original.width }}" sizes="(min-width: 36em) calc(.333 * (100vw - 12em)),100vw" height="{{ original.height }}" />
