@@ -21,7 +21,7 @@ robots: all
 
 ##### What are cookies?
 
-A cookie is a small text file saved on your computer or mobile device by a website when you visit {{ site.url | escape }}. The cookie enables the website to remember your actions and preferences such as login, language, font size and other display preferences to keep you from having to re-enter them on every visit to the website or when browsing from page to page.
+A cookie is a small text file saved on your computer or mobile device by a website when you visit <a hre="{ site.url | escape }}" alt="{{ page.title | escape }}">{{ site.url | escape }}</a>. The cookie enables the website to remember your actions and preferences such as login, language, font size and other display preferences to keep you from having to re-enter them on every visit to the website or when browsing from page to page.
 
 ##### How do we use cookies?
 
@@ -34,4 +34,4 @@ In addition some embedded videos in our pages use a cookie to anonymously gather
 
 ##### How to control cookies
 
-You can block and/or delete cookies as you wish using your browser settings.You can delete all cookies that are already on your computer and you can set your browser to prevent them from being placed. By doing this you may have to manually adjust some preferences every time you visit {{ site.url | escape }} and some services and functionalities may not work.
+You can block and/or delete cookies as you wish using your browser settings.You can delete all cookies that are already on your computer and you can set your browser to prevent them from being placed. By doing this you may have to manually adjust some preferences every time you visit <a hre="{ site.url | escape }}" alt="{{ page.title | escape }}">{{ site.url | escape }}</a> and some services and functionalities may not work.
