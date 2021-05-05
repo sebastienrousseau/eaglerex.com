@@ -1,6 +1,6 @@
 'use strict';
 
-const cacheVersion = 1620098022;
+const cacheVersion = 1620214017;
 const offlineCache = 'offline-' + cacheVersion;
 const offlinePage = '/offline.html';
 const debugMode = false;
