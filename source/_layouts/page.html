@@ -2,7 +2,7 @@
 layout: compress
 ---
 <!DOCTYPE html>
-    <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+    <html lang="{{ page.lang | default: site.lang | default: "en" }}" itemscope itemtype="http://schema.org/WebPage">
 
     {% include head.html %}
 
@@ -14,7 +14,7 @@ layout: compress
                 <a href="{{ " / " | site_url }}" title="{{ site.title | escape }}">
                     {% responsive_image_block %}
                     path: assets/images/image-icon/logo.png  
-                    alt: {{ site.title | escape }}
+                    alt: {{ site.description | escape }}
                     {% endresponsive_image_block %}                                        
                 </a>    
                 <span>
@@ -22,20 +22,13 @@ layout: compress
                 </span>                
             </h1>
                         
-            <h2 title="{{ site.subtitle | escape }}"><em>{{ site.subtitle | escape }}</em></h2>
-            
-            <section class="introduction grid-flex">
-                <row class="flex-1 padding-1">                    
-                    <h3 class="home">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>
-                    
-                    <p><a href="https://www.zwiftpower.com/team.php?id=15793&do=join" class="button"alt="Join TEAM EAGLE REX" title="Join TEAM EAGLE REX">Join TEAM EAGLE REX</a></p>
-                </row>
-            </section>
-        
+            <h2 title="{{ site.description | escape }}"><em>{{ site.subtitle | escape }}</em></h2>
+            <h3 class="home">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>                    
+
             <section class="about grid-flex">
-                <row class="flex-1 padding-1 text-left">
+                <div class="flex-1 padding-1 text-left">
                     {{ content }}                    
-                </row>                
+                </div>                
             </section>
                 
         </main>

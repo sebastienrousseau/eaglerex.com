@@ -2,7 +2,7 @@
 layout: compress
 ---
 <!DOCTYPE html>
-    <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+    <html lang="{{ page.lang | default: site.lang | default: "en" }}" itemscope itemtype="http://schema.org/WebPage">
 
     {% include head.html %}
 
@@ -14,7 +14,7 @@ layout: compress
                 <a href="{{ " / " | site_url }}" title="{{ site.title | escape }}">
                     {% responsive_image_block %}
                     path: assets/images/image-icon/logo.png  
-                    alt: {{ site.title | escape }}
+                    alt: {{ site.description | escape }}
                     {% endresponsive_image_block %}                    
                 </a>    
                 <span>
@@ -23,9 +23,9 @@ layout: compress
             </h1>
                         
             <section class="grid-flex">
-                <row class="flex-1 padding-1">  
+                <div class="flex-1 padding-1">  
             {{ content }}   
-              </row>
+              </div>
             </section>                 
                 
         </main>

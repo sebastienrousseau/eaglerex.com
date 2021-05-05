@@ -19,8 +19,6 @@ robots: all
 ---
 #### Hello and welcome to the Eagle Rex Cycling Club!
 
-{% responsive_image path: assets/images/backgrounds/bg-about.png alt: "About Us  - Eagle Rex Cycling Club" title: "About Us  - Eagle Rex Cycling Club" %}     
-
 Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK
 
 The club is open to everyone who wants to gradually return to regular exercise, stay active, keep fit, support their own health, well-being and remain in good shape.
@@ -33,4 +31,9 @@ Our aim is to inspire you to help achieve your goals - whatever they might be.
 
 Please ensure to give a Ride On to our fellow Zwifters to cheer them on and use our tag [EAGLEREX] after your name.
 
-Enjoy!
+<figure>
+{% responsive_image path: assets/images/backgrounds/bg-about.png alt: "" %}     
+<figcaption aria-hidden="true">
+    A cycling team riding in the beautiful sunshine
+</figcaption>
+</figure>   
