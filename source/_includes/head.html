@@ -8,17 +8,26 @@
     <link rel="alternate" href="{{ site.url }}" hreflang="{{ site.lang }}" />
     <link rel="manifest" href="/manifest.json">
     
-    <!--link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/stylesheets/eaglerex.css" media="all" /-->
-    <link rel="preload" href="https://unpkg.com/skeletonic/dist/skeletonic-fonts.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://unpkg.com/skeletonic/dist/skeletonic-colours.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://unpkg.com/skeletonic/dist/skeletonic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' data: gap: https://ssl.gstatic.com
+              https://unpkg.com https://open-sans.com
+              'unsafe-eval';
+              style-src 'self' https://unpkg.com 'unsafe-inline';
+              script-src 'self' https://unpkg.com 'unsafe-inline';
+              media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- External CSS -->
+    <link rel="preload" href="https://unpkg.com/skeletonic@1.1.5/dist/skeletonic-fonts.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/skeletonic@1.1.5/dist/skeletonic-colours.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/skeletonic@1.1.5/dist/skeletonic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Inline critical css -->
     <style>
         {% include eaglerex.html %}
     </style>
-
     
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ site_url }}/favicon.ico" >
