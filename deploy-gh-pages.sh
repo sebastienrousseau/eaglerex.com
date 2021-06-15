@@ -2,12 +2,12 @@
 
 version=($(git rev-parse --short HEAD))
 
-PACKAGE_VERSION=$(cat package.json \
+PACKAGE_VERSION=($(cat package.json \
   | grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
   | sed 's/[",]//g' \
-  | tr -d '[[:space:]]')
+  | tr -d '[[:space:]]'))
 
 # Remove the current content of the _site folder
 rm -rf _site
@@ -38,7 +38,7 @@ git commit -m "$message" > /dev/null 2>&1
 # Push the changes to the to gh-pages branch
 git push > /dev/null 2>&1
 if [ $? = 0 ]; then
-  echo "[Success]: Deployment successful of v$PACKAGE_VERSION ($version) to gh-pages"
+  echo "[Success]: Deployment successful of v $PACKAGE_VERSION ($version) to gh-pages"
 else
-  echo "[Error]: Deployment failure of v$PACKAGE_VERSION ($version) to gh-pages"
+  echo "[Error]: Deployment failure of v $PACKAGE_VERSION ($version) to gh-pages"
 fi
