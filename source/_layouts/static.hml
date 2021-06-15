@@ -10,17 +10,14 @@ layout: compress
 
         <main class="container top text-center">
         
-            <h1 class="logo">
-                <a href="{{ " / " | site_url }}" title="{{ site.title | escape }}">
-                    {% responsive_image_block %}
-                    path: assets/images/image-icon/logo.png  
-                    alt: {{ site.description | escape }}
-                    {% endresponsive_image_block %}                    
-                </a>    
-                <span>
-                    {{ site.title | escape }}
-                </span>                
-            </h1>
+            <figure>
+                <a href=" / " tabindex="0"> 
+                    <img src="/assets/images/logo-black.min.svg" id="eaglerex" alt="Logo of {{ site.title | escape }}" width="583" height="438" class="logo"> 
+                </a>
+                <figcaption>{{ site.title | escape }}</figcaption>
+            </figure>
+    
+            <h1>{{ site.title | escape }}</h1>                        
                         
             <section class="grid-flex">
                 <div class="flex-1 padding-1">  

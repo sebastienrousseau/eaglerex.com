@@ -15,7 +15,6 @@ group :jekyll_plugins do
   gem "jekyll-include-cache"
   gem "jekyll-minifier"
   gem "jekyll-paginate"
-  gem "jekyll-responsive-image"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "rubocop"

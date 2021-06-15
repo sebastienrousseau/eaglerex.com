@@ -1,11 +1,13 @@
 ---
 layout: page
 title: Eagle Rex Cycling Club - Terms and Conditions
+subtitle: Eagle Rex Cycling Club - Terms and Conditions
 description: Eagle Rex is a friendly and diverse cycling club, founded in 2021 and based in London, UK.
 keywords: eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk
-image: /assets/images/logo.png
+image: /assets/images/logo-black.min.svg
 author: Sebastian Rousseau
 permalink: /terms.html
+api: /api/v1/terms/
 categories: [cycling club]
 tags: [eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk]
 section: terms
@@ -13,7 +15,7 @@ status: publish
 type: page
 published: true
 meta: { eagle rex, cycling club, bicycle clubs, bike club, cycling group, london, uk}
-date: May 1, 2021 
+date: 2021-06-15T16:17:31.644Z
 robots: all
 ---
 

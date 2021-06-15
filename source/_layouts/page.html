@@ -9,30 +9,21 @@ layout: compress
     <body itemscope itemtype="http://schema.org/WebPage">
 
         <main class="container top text-center">
-        
-            <h1 class="logo">
-                <a href="{{ " / " | site_url }}" title="{{ site.title | escape }}">
-                    {% responsive_image_block %}
-                    path: assets/images/image-icon/logo.png  
-                    alt: {{ site.description | escape }}
-                    {% endresponsive_image_block %}                                        
-                </a>    
-                <span>
-                    {{ site.title | escape }}
-                </span>                
-            </h1>
-                        
-            <h2 title="{{ site.description | escape }}"><em>{{ site.subtitle | escape }}</em></h2>
-            <h3 class="home">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>                    
-
+            <figure>
+                <a href=" / " tabindex="0"> 
+                    <img src="/assets/images/logo-black.min.svg" id="eaglerex" alt="Logo of {{ site.title | escape }}" width="583" height="438" class="logo"> 
+                </a>
+                <figcaption>{{ site.title | escape }}</figcaption>
+            </figure>
+            <h1>{{ page.title | escape }}</h1>
+            <h2 title="{{ page.description | escape }}"><em>{{ page.subtitle | escape }}</em></h2>
+            <h3 title="The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>                    
             <section class="about grid-flex">
                 <div class="flex-1 padding-1 text-left">
                     {{ content }}                    
                 </div>                
             </section>
-                
-        </main>
-
+        </main>        
     {% include footer.html %}
 
     </body>

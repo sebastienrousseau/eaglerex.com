@@ -7,72 +7,92 @@ layout: compress
     {% include head.html %}
 
     <body itemscope itemtype="http://schema.org/WebPage">
+        <video 
+            class="video" 
+            autoplay="autoplay" 
+            loop ="loop" 
+            muted="muted"  
+            poster="/assets/videos/background.jpg" 
+            preload="auto"
+            tabindex="0">
+            <source src="/assets/videos/background.webm" type='video/webm' />
+            <source src="/assets/videos/background.mp4" type='video/mp4' />
+            <source src="/assets/videos/background.ogv" type='video/ogg' />
+        </video>
 
-        <main class="container top text-center">
-            <h1 class="logo">
-                <a href="{{ " / " | site_url }}" title="{{ site.title | escape }}">
-                {% responsive_image_block %}
-                path: assets/images/image-icon/logo.png  
-                alt: {{ site.description | escape }}
-                {% endresponsive_image_block %}
-                </a>    
-                <span>
-                    {{ site.title | escape }}
-                </span>                
-            </h1>
-        
-            <h2 title="{{ site.description | escape }}"><em>{{ site.subtitle | escape }}</em></h2>
-        
-            <h3 class="home">The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>                    
-            
-            
-            <section class="grid-flex padding-3">
-                <div class="card flex-1 padding-1">
-                    <a href="/training-plans.html">
-                        <h4>Training Plans</h4>
-                        {% responsive_image path: assets/images/image-icon/training.png alt: "Icon representing Training Plans" %}                        
-                    </a>               
-                    <p>Combine elements of CrossFit and Strength Training to achieve your ultimate goals, build on your strengths, target weaknesses and achieve peak performance.</p>
+        <header>
+            <figure>
+                <a href=" / " tabindex="0"> 
+                    <img src="/assets/images/logo-white.min.svg" id="eaglerex" alt="Logo of {{ site.title | escape }}" width="583" height="438" class="logo"> 
+                </a>
+                <figcaption>{{ site.title | escape }}</figcaption>
+            </figure>
+    
+            <h1>{{ site.title | escape }}</h1>
+            <h2><em>{{ site.subtitle | escape }}</em></h2>
+            <h3>The Eagle Rex Cycling Club provides effective fitness training methods and workout programs to cyclists of all skill and experience levels.</h3>
+            <p>
+                <a href="#section" title="Learn more">
+                    <img src="assets/images/arrow.svg" class="arrow" width="300" height="300" alt="Learn more" />
+                </a>
+            </p>
+        </header>
+
+        <main class="container text-center ">
+            <section id="section" class="grid-flex content">
+                <div class="card flex-1 justify-center padding-3">
+                    <h3>Training Plans</h3>
+                    <p>Combine elements of CrossFit and Strength Training to build on your strengths, target weaknesses and achieve peak performance.</p>
+                    <a href="/training-plans.html" class="button primary">
+                        Access our training plans
+                    </a>                    
                 </div>
 
-                <div class="card flex-1 padding-1">
-                    <a href="/workout-routines.html">
-                        <h4>Workout Routines</h4>                        
-                        {% responsive_image path: assets/images/image-icon/workouts.png alt: "Icon representing Workout Routines" %}
-                    </a>
-                    <p>Get access to all the Eagle Rex cycling workout routines. Break through your current limits with our proven method.</p>
+                <div class="card flex-1 justify-center padding-3">
+                    <h3>Workout Routines</h3>
+                    <p>Get access to all the Eagle Rex cycling workout routines.<br />Break through your current limits at your own pace with our proven method.</p>
+                    <a href="/workout-routines.html" class="button primary">
+                        Access our workout routines
+                    </a>                    
                 </div>
+                </section>
 
-                <div class="card flex-1 padding-1">
-                    <a href="/free-zwift-resources.html">
-                        <h4>Free Zwift Resources</h4>            
-                        {% responsive_image path: assets/images/image-icon/zwift.png alt: "Icon representing our Free Zwift Resources" %}                    
-                    </a>
+                <section id="section-2" class="grid-flex">
+                <div class="card flex-1 justify-center padding-3">
+                    <h3>Free Zwift Resources</h3>
                     <p>Reach Your Physique Goals and Achieve Peak Performance.</p>
+                    <a href="/free-zwift-resources.html" class="button primary">
+                        Access our zwift resources
+                    </a>                    
                 </div>
                 
-                <div class="card flex-1 padding-1">
-                    <a href="/about.html">
-                    <h4>About Us</h4>
-                    {% responsive_image path: assets/images/image-icon/us.png alt: "Icon representing the About Us section" %}
-                    </a>
+                <div class="card flex-1 justify-center padding-3">
+                    <h3>About Us</h3>
                     <p>A little bit about who we are, and what we try to be.</p>
+                    <a href="/about.html" class="button primary">
+                        More information
+                    </a>                    
                 </div>
-
-                <div class="card flex-1 padding-1">
-                    <a href="/">
-                        <h4>Facebook</h4>
-                        {% responsive_image path: assets/images/image-icon/fb.png alt: "Icon representing Facebook" %}
-                    </a>
+                </section>
+                
+                <section id="section-3" class="grid-flex">                
+                
+                <div class="card flex-1 justify-center padding-3">
+                    <h3>Facebook</h3>
                     <p>Our main Facebook group for questions, support and just sharing Eagle Rex love</p>
+                    <a href="/" class="button primary">                        
+                        Find us on Facebook
+                    </a>
+                    
                 </div>
 
-                <div class="card flex-1 padding-1">
-                    <a href="https://www.strava.com/clubs/eaglerex">
-                        <h4>Strava</h4>    
-                        {% responsive_image path: assets/images/image-icon/strava.png alt: "Icon representing Strava" %}
+                <div class="card flex-1 justify-center padding-3">
+                    <h3>Strava</h3>
+                    <p>This is the page where herdlings strut their stuff</p>
+                    <a href="https://www.strava.com/clubs/eaglerex" class="button primary">
+                        Join us on Strava                  
                     </a>
-                    <p>This is the page Where herdlings strut their stuff</p>                    
+                    
                 </div>
             
                 <hr style="clear: both;visibility: hidden;" />

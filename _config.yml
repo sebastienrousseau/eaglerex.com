@@ -1,51 +1,32 @@
-# _config.yml
-
-# bundle exec jekyll build
-# bundle exec jekyll clean 
-# bundle exec jekyll serve
-
-# Site settings
-title: Eagle Rex
-subtitle: Dare to Soar
-description: Eagle Rex description
+assets:
+  caching:
+    enabled: true
+    path: .jekyll-cache/assets
+    type: file
+  compress:
+    css: /assets/styles/*.css
+    img: /assets/**/*.{jpg,png}
+    js: /assets/js/*.js
+    video: /assets/videos/*.{mp4}
+  compression: true
+  gzip: true
+  plugins:
+    css:
+      autoprefixer: {}
+    img:
+      optim: {}
+  source_maps: false
+  sources:
+    - assets/fonts
+    - assets/icons
+    - assets/images
+    - assets/videos
+    - assets/javascripts
+    - assets/stylesheets
 author: Sebastian Rousseau
-theme-color: "#000"
-background_color: "#fff"
-lang: en
-locale: en_gb
-email: hello@eaglerex.com
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://eaglerex.com" # the base hostname & protocol for your site
-
-# Social Media settings
-twitter_username: eaglerex
-twitter_creator: wwdseb
-github_username: sebastienrousseau
 author_facebook: eaglerex
-facebook_username: eaglerex
-facebook_id: 10156052650356913
-linkedin_username: eaglerex
-google_analytics: G-X7J1L6Q2D2
-
-# Set the source folder
-source: source
-
-# Build settings
-encoding: utf-8
-repository: sebastienrousseau/eaglerex.com
-markdown: kramdown
-
-# Installed plugins 
-plugins:
-  - jekyll-feed
-  - jekyll-include-cache
-  - jekyll-minifier
-  - jekyll-paginate
-  - jekyll-responsive-image
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-# Plugins settings
+background_color: '#fff'
+baseurl: ''
 compress_html:
   blanklines: false
   clippings: all
@@ -53,61 +34,10 @@ compress_html:
   endings: all
   profile: true
   startings: all
-
-feed:
-  path: atom.xml
-
-# Responsive images
-responsive_image:
-  template: _includes/responsive-image.html
-  sizes:
-    - width: 500
-    - width: 250
-    - width: 125     
-  strip: true
-  base_path: assets/images/image-icon
-  cache: true
-  output_path_format: assets/images/%{width}/%{basename}
-
-kramdown:
-  toc_levels: 1..3
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  entity_output: as_char
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-highlighter: rouge
-
-assets:
-  plugins:
-    css: { autoprefixer: {}}
-    img: { optim: {}}
-  source_maps: false
-  compression: false
-  gzip: false  
-  sources:
-    - assets/fonts
-    - assets/icons
-    - assets/images
-    - assets/javascripts
-    - assets/stylesheets
-  caching:
-    enabled: true
-    path: ".jekyll-cache/assets"
-    type: file # Possible values: memory, file
-  compress:
-    css: "/assets/styles/*.css"
-    img: "/assets/**/*.{jpg,png}"
-    js: "/assets/js/*.js"
-
-include:
-  - .htaccess
-  - assets
-  - _pages
+description: Eagle Rex description
+email: hello@eaglerex.com
+encoding: utf-8
 excerpt_separator: <!--more-->
-keep_files:
-  - .git
 exclude:
   - .asset-cache
   - .bundle
@@ -115,8 +45,8 @@ exclude:
   - .jekyll-cache
   - .sass-cache
   - .travis.yml
-  - "*.sublime-project"
-  - "*.sublime-workspace"
+  - '*.sublime-project'
+  - '*.sublime-workspace'
   - Capfile
   - config
   - Gemfile
@@ -136,3 +66,48 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - yarn.lock
+facebook_id: 10156052650356912
+facebook_username: eaglerex
+feed:
+  path: atom.xml
+github_username: sebastienrousseau
+google_analytics: G-X7J1L6Q2D2
+highlighter: rouge
+include:
+  - .htaccess
+  - assets
+  - _pages
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+  keep_files:
+  - .git
+kramdown:
+  auto_ids: true
+  enable_coderay: false
+  entity_output: as_char
+  hard_wrap: false
+  input: GFM
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  toc_levels: 1..3
+kramdown:auto_ids: true
+lang: en
+linkedin_username: eaglerex
+locale: en_gb
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-minifier
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+repository: sebastienrousseau/eaglerex.com
+source: source
+subtitle: Dare to Soar
+theme-color: '#000'
+title: Eagle Rex Cycling Club
+twitter_creator: wwdseb
+twitter_username: eaglerex
+url: https://eaglerex.com
+version: 0.0.2
