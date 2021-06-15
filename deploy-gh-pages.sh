@@ -2,12 +2,7 @@
 
 version=($(git rev-parse --short HEAD))
 
-PACKAGE_VERSION=($(cat package.json \
-  | grep version \
-  | head -1 \
-  | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
-  | tr -d '[[:space:]]'))
+PACKAGE_VERSION=($(cat _config.yml | shyaml get-value version))
 
 # Remove the current content of the _site folder
 rm -rf _site
@@ -15,6 +10,7 @@ rm -rf _site
 # Get the latest commit in main branch
 commit=$(git log -n 1 --pretty='format:%C(auto)%h (%s, %ad)')
 echo "[Commit]: ${commit}"
+echo "[Version]:$PACKAGE_VERSION"
 
 # Clone remote _site branch 
 git clone -b gh-pages `git config remote.origin.url` _site
@@ -38,7 +34,7 @@ git commit -m "$message" > /dev/null 2>&1
 # Push the changes to the to gh-pages branch
 git push > /dev/null 2>&1
 if [ $? = 0 ]; then
-  echo "[Success]: Deployment successful of v $PACKAGE_VERSION ($version) to gh-pages"
+  echo "[Success]: Deployment successful of v$PACKAGE_VERSION ($version) to gh-pages"
 else
-  echo "[Error]: Deployment failure of v $PACKAGE_VERSION ($version) to gh-pages"
+  echo "[Error]: Deployment failure of v$PACKAGE_VERSION ($version) to gh-pages"
 fi
