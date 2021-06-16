@@ -102,11 +102,8 @@ self.addEventListener('fetch', event => {
             })
       );
 });
-function video(message) {
-    if ( request.url.match(/\.(mp4)$/) ) {
-        return;
-        console.log(message);
-    }
+if ( request.url.match(/\.(mp4)$/) ) {    
+    return false;
 }
 
 function debug(message) {
