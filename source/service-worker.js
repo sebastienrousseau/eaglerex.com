@@ -67,6 +67,10 @@ self.addEventListener('fetch', event => {
         return;
     }
 
+    if ( request.url.match(/\.(mp4)$/) ) {    
+        return false;
+    }    
+
     event.respondWith(
         caches.match(request)
             .then(response => {
@@ -102,9 +106,6 @@ self.addEventListener('fetch', event => {
             })
       );
 });
-if ( request.url.match(/\.(mp4)$/) ) {    
-    return false;
-}
 
 function debug(message) {
     if (debugMode) {
