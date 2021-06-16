@@ -1,10 +1,9 @@
 ---
 ---
 
-var digest_paths = "/assets/icons/icon-192x192.png,/assets/icons/icon-256x256.png,/assets/icons/icon-384x384.png,/assets/icons/icon-512x512.png,/assets/images/arrow.svg,/assets/backgrounds/bg-about.png,/assets/backgrounds/bg-training.png,/assets/backgrounds/bg-workouts.png,/assets/images/logo-black.min.svg,/assets/images/logo-black.svg,/assets/images/logo-white.min.svg,/assets/images/logo-white.svg,/assets/images/manifest.jpg,/assets/js/main.js,/assets/js/service-worker-setup.js,/assets/videos/background.jpg,/assets/videos/background.mp4"
 var version = "v{{site.time | date: '%Y%m%d%H%M%S'}}-";
-var staticCacheName = version + "assets-" + digest_paths;
-var staticAssets = ['/manifest.json', digest_paths];
+var staticCacheName = version + "assets-C8A6B59AACBFCFC343DF31C18D6C5A3F";
+var staticAssets = ['/manifest.json', 'assets/icons/icon-192x192.png','assets/icons/icon-256x256.png','assets/icons/icon-384x384.png','assets/icons/icon-512x512.png','assets/images/arrow.svg','assets/images/backgrounds/bg-about.png','assets/images/backgrounds/bg-training.png','assets/images/backgrounds/bg-workouts.png','assets/images/logo-black.min.svg','assets/images/logo-black.svg','assets/images/logo-white.min.svg','assets/images/logo-white.svg','assets/images/manifest.jpg','assets/js/main.js','assets/js/service-worker-setup.js','assets/videos/background.jpg','assets/videos/background.mp4'];
 
 var pageCacheName = version + 'pages';
 var offlinePages = ['/', 'api', '/offline/'];
@@ -31,7 +30,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   var url = new URL(event.request.url);
-  if (url.pathname.match(/^\/((assets)\/|manifest.json$)/)) {
+  if (url.pathname.match(/^((assets)\/|manifest.json$)/)) {
     if (event.request.headers.get('range')) {
       event.respondWith(returnRangeRequest(event.request, staticCacheName));
     } else {
