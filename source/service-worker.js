@@ -1,114 +1,202 @@
 ---
-layout: null
 ---
 
-'use strict';
+{% capture digest_paths %}{% for asset in assets %}{% unless asset[0] contains "/" %}{% unless asset[0] contains "merriweather" %}{% unless asset[0] contains "raleway" %}{% unless asset[0] contains "package" %}{{ asset[1].digest_path }},{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endfor %}{% endcapture %}
 
-const cacheVersion = {{'now' | date: '%s' }};
-const offlineCache = 'offline-' + cacheVersion;
-const offlinePage = '/offline.html';
-const debugMode = false;
+var version = "v{{ site.sw_cache_version }}-";
 
-/**
- * Delete caches that do not match the current version of the service worker.
- *
- * @returns {*|Promise.<TResult>}
- */
-function clearOldCaches() {
-    debug("Clean old caches");
-    return caches.keys().then(keys => {
-        return Promise.all(
-            keys
-                .filter(key => key.indexOf(offlineCache) !== 0)
-                .map(key => caches.delete(key))
-        );
+var staticCacheName = version + "assets-{{ digest_paths | md5 }}";
+var staticAssets = ['/manifest.json', '{{ digest_paths | split: "," | join: "', '" }}'];
+
+var pageCacheName = version + 'pages';
+var offlinePages = ['/', 'api', '/offline/'];
+var currentCaches = [staticCacheName, pageCacheName];
+
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    Promise.all([
+      cacheAllIn(staticAssets, staticCacheName),
+      cacheAllIn(offlinePages, pageCacheName)
+    ]).then(function() {
+      self.skipWaiting();
+    })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    deleteOldCaches(currentCaches).then(function() {
+      self.clients.claim();
+    })
+  );
+});
+
+self.addEventListener('fetch', function(event) {
+  var url = new URL(event.request.url);
+  if (url.pathname.match(/^\/((assets)\/|manifest.json$)/)) {
+    if (event.request.headers.get('range')) {
+      event.respondWith(returnRangeRequest(event.request, staticCacheName));
+    } else {
+      event.respondWith(returnFromCacheOrFetch(event.request, staticCacheName));
+    }
+  } else if (
+    event.request.mode === 'navigate' ||
+    event.request.headers.get('Accept').indexOf('text/html') !== -1
+  ) {
+    // cache then network
+    event.respondWith(cacheThenNetwork(event.request, pageCacheName));
+  }
+});
+
+function returnRangeRequest(request, cacheName) {
+  return caches
+    .open(cacheName)
+    .then(function(cache) {
+      return cache.match(request.url);
+    })
+    .then(function(res) {
+      if (!res) {
+        fetch(request.url)
+          .then(res => {
+            return caches
+              .open(cacheName)
+              .then(cache => cache.put(request, res))
+          });
+        return fetch(request);
+      } else {
+        return res;
+      }
+    })
+    .then(function(res) {
+      if (res.status === 206) {
+        return res;
+      } else {
+        return res.blob();
+      }
+    })
+    .then(function(responseOrBlob) {
+      if (responseOrBlob instanceof Response) {
+        return responseOrBlob;
+      }
+      const bytes = /^bytes\=(\d+)\-(\d+)?$/g.exec(
+        request.headers.get('range')
+      );
+      if (bytes) {
+        const start = Number(bytes[1]);
+        const end = Number(bytes[2]) || responseOrBlob.size - 1;
+        return new Response(responseOrBlob.slice(start, end + 1), {
+          status: 206,
+          statusText: 'Partial Content',
+          headers: [
+            ['Content-Range', `bytes ${start}-${end}/${responseOrBlob.size}`]
+          ]
+        });
+      } else {
+        return new Response(null, {
+          status: 416,
+          statusText: 'Range Not Satisfiable',
+          headers: [['Content-Range', `*/${responseOrBlob.size}`]]
+        });
+      }
     });
 }
-
-function cacheOfflinePage() {
-    debug("Cache offline page");
-    return caches.open(offlineCache)
-        .then(cache => {
-            return cache.addAll([offlinePage]);
+function cacheAllIn(paths, cacheName) {
+  return caches.open(cacheName).then(function(cache) {
+    return cache.addAll(paths);
+  });
+}
+function deleteOldCaches(currentCaches) {
+  return caches.keys().then(function(names) {
+    return Promise.all(
+      names
+        .filter(function(name) {
+          return currentCaches.indexOf(name) === -1;
         })
-        .catch(error => {
-            debug(error);
+        .map(function(name) {
+          return caches.delete(name);
         })
+    );
+  });
+}
+function openCacheAndMatchRequest(cacheName, request) {
+  var cachePromise = caches.open(cacheName);
+  var matchPromise = cachePromise.then(function(cache) {
+    return cache.match(request);
+  });
+  return [cachePromise, matchPromise];
 }
 
-/**
- * Install Service Worker
- */
- self.addEventListener('install', event => {
-    debug("Installing Service Worker");
-    event.waitUntil(
-        cacheOfflinePage()
-        .then( () => self.skipWaiting() )
-    );
-});
+function cacheSuccessfulResponse(cache, request, response) {
+  if (response.ok) {
+    return cache.put(request, response.clone()).then(() => {
+      return response;
+    });
+  } else {
+    return response;
+  }
+}
 
-/**
- * Activate Service Worker
- */
-self.addEventListener('activate', event => {
-    debug("Activating Service Worker");
-    event.waitUntil(
-        clearOldCaches()
-            .then(() => self.clients.claim())
-    );
-});
-
-self.addEventListener('fetch', event => {
-    let request = event.request;
-
-    // Ignore non-GET requests
-    if (request.method !== 'GET') {
-        debug("Ignoring non GET request");
-        return;
-    }
-
-    if ( request.url.match(/\.(mp4)$/) ) {    
-        return false;
-    }    
-
-    event.respondWith(
-        caches.match(request)
-            .then(response => {
-                // CACHE
-                debug("Fetching " + request.url)
-
-                if (response) {
-                    debug("Found in cache: " + request.url);
-                }
-
-                return response || fetch(request)
-                    .then( response => {
-                        // NETWORK
-                        debug("Going to network: " + request.url);
-                        if (response && response.ok) {
-                            debug("Saving in cache: " + request.url);
-                            let copy = response.clone();
-                            caches.open(offlineCache)
-                                .then( cache => cache.put(request, copy) );
-                        }
-                        return response;
-                    })
-                    .catch( error => {
-                        // OFFLINE
-                        debug("Offline and no cache for: " + request.url + ": " + error);
-                        if (request.mode == 'navigate') {
-                            debug("Showing offline page")
-                            return caches.match(offlinePage);
-                        } else if (request.headers.get('Accept').indexOf('image') !== -1) {
-                            return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Helvetica Neue,Arial,Helvetica,sans-serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {headers: {'Content-Type': 'image/svg+xml'}});
-                        }
-                    });
-            })
+function returnFromCacheOrFetch(request, cacheName) {
+  return Promise.all(openCacheAndMatchRequest(cacheName, request)).then(
+    function(responses) {
+      var cache = responses[0];
+      var cacheResponse = responses[1];
+      // return the cached response if we have it, otherwise the result of the fetch.
+      return (
+        cacheResponse ||
+        fetch(request).then(function(fetchResponse) {
+          // Cache the updated file and then return the response
+          cacheSuccessfulResponse(cache, request, fetchResponse);
+          return fetchResponse;
+        })
       );
-});
-
-function debug(message) {
-    if (debugMode) {
-        console.log(message);
     }
+  );
+}
+
+function cacheThenNetwork(request, cacheName) {
+  return Promise.all(openCacheAndMatchRequest(cacheName, request)).then(
+    function(responses) {
+      var cache = responses[0];
+      var cacheResponse = responses[1];
+      if (cacheResponse) {
+        // If it's in the cache then start a fetch to update the cache, but
+        // return the cached response
+        fetch(request)
+          .then(function(fetchResponse) {
+            return cacheSuccessfulResponse(cache, request, fetchResponse);
+          })
+          .then(refresh)
+          .catch(function(err) {
+            // Offline/network failure, but nothing to worry about
+          });
+        return cacheResponse;
+      } else {
+        // If it's not in the cache then start a fetch
+        return fetch(request)
+          .then(function(fetchResponse) {
+            cacheSuccessfulResponse(cache, request, fetchResponse);
+            return fetchResponse;
+          })
+          .catch(function() {
+            // Offline, so return the offline page.
+            return caches.match('/offline/');
+          });
+      }
+    }
+  );
+}
+function refresh(response) {
+  return self.clients.matchAll().then(function(clients) {
+    if (response.headers.get('Content-Type').indexOf('text/html') !== -1) {
+      clients.forEach(function(client) {
+        var message = {
+          type: 'refresh',
+          url: response.url,
+          eTag: response.headers.get('ETag')
+        };
+        client.postMessage(JSON.stringify(message));
+      });
+    }
+  });
 }
