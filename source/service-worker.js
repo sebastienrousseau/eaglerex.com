@@ -4,11 +4,7 @@ layout: null
 
 'use strict';
 
-const cacheVersion = {
-    {
-        'now' | date: '%s'
-    }
-};
+const cacheVersion = {{'now' | date: '%s' }};
 const offlineCache = 'offline-' + cacheVersion;
 const offlinePage = '/offline.html';
 const debugMode = false;
@@ -23,8 +19,8 @@ function clearOldCaches() {
     return caches.keys().then(keys => {
         return Promise.all(
             keys
-            .filter(key => key.indexOf(offlineCache) !== 0)
-            .map(key => caches.delete(key))
+                .filter(key => key.indexOf(offlineCache) !== 0)
+                .map(key => caches.delete(key))
         );
     });
 }
@@ -43,11 +39,11 @@ function cacheOfflinePage() {
 /**
  * Install Service Worker
  */
-self.addEventListener('install', event => {
+ self.addEventListener('install', event => {
     debug("Installing Service Worker");
     event.waitUntil(
         cacheOfflinePage()
-        .then(() => self.skipWaiting())
+        .then( () => self.skipWaiting() )
     );
 });
 
@@ -58,7 +54,7 @@ self.addEventListener('activate', event => {
     debug("Activating Service Worker");
     event.waitUntil(
         clearOldCaches()
-        .then(() => self.clients.claim())
+            .then(() => self.clients.claim())
     );
 });
 
@@ -73,92 +69,45 @@ self.addEventListener('fetch', event => {
 
     event.respondWith(
         caches.match(request)
-        .then(response => {
-            // CACHE
-            debug("Fetching " + request.url)
+            .then(response => {
+                // CACHE
+                debug("Fetching " + request.url)
 
-            if (response) {
-                debug("Found in cache: " + request.url);
-            }
+                if (response) {
+                    debug("Found in cache: " + request.url);
+                }
 
-            return response || fetch(request)
-                .then(response => {
-                    // NETWORK
-                    debug("Going to network: " + request.url);
-                    if (response && response.ok) {
-                        debug("Saving in cache: " + request.url);
-                        let copy = response.clone();
-                        caches.open(offlineCache)
-                            .then(cache => cache.put(request, copy));
-                    }
-                    return response;
-                })
-                .catch(error => {
-                    // OFFLINE
-                    debug("Offline and no cache for: " + request.url + ": " + error);
-                    if (request.mode == 'navigate') {
-                        debug("Showing offline page")
-                        return caches.match(offlinePage);
-                    } else if (request.headers.get('Accept').indexOf('image') !== -1) {
-                        return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Helvetica Neue,Arial,Helvetica,sans-serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {
-                            headers: {
-                                'Content-Type': 'image/svg+xml'
-                            }
-                        });
-                    }
-                });
-        })
-    );
-});
-
-function returnRangeRequest(request, cacheName) {
-    return caches
-        .open(cacheName)
-        .then(function (cache) {
-            return cache.match(request.url);
-        })
-        .then(function (res) {
-            if (!res) {
-                return fetch(request)
-                    .then(res => {
-                        const clonedRes = res.clone();
-                        return caches
-                            .open(cacheName)
-                            .then(cache => cache.put(request, clonedRes))
-                            .then(() => res);
+                return response || fetch(request)
+                    .then( response => {
+                        // NETWORK
+                        debug("Going to network: " + request.url);
+                        if (response && response.ok) {
+                            debug("Saving in cache: " + request.url);
+                            let copy = response.clone();
+                            caches.open(offlineCache)
+                                .then( cache => cache.put(request, copy) );
+                        }
+                        return response;
                     })
-                    .then(res => {
-                        return res.arrayBuffer();
+                    .catch( error => {
+                        // OFFLINE
+                        debug("Offline and no cache for: " + request.url + ": " + error);
+                        if (request.mode == 'navigate') {
+                            debug("Showing offline page")
+                            return caches.match(offlinePage);
+                        } else if (request.headers.get('Accept').indexOf('image') !== -1) {
+                            return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Helvetica Neue,Arial,Helvetica,sans-serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {headers: {'Content-Type': 'image/svg+xml'}});
+                        }
                     });
-            }
-            return res.arrayBuffer();
-        })
-        .then(function (arrayBuffer) {
-            const bytes = /^bytes\=(\d+)\-(\d+)?$/g.exec(
-                request.headers.get('range')
-            );
-            if (bytes) {
-                const start = Number(bytes[1]);
-                const end = Number(bytes[2]) || arrayBuffer.byteLength - 1;
-                return new Response(arrayBuffer.slice(start, end + 1), {
-                    status: 206,
-                    statusText: 'Partial Content',
-                    headers: [
-                        ['Content-Range', `bytes ${start}-${end}/${arrayBuffer.byteLength}`]
-                    ]
-                });
-            } else {
-                return new Response(null, {
-                    status: 416,
-                    statusText: 'Range Not Satisfiable',
-                    headers: [
-                        ['Content-Range', `*/${arrayBuffer.byteLength}`]
-                    ]
-                });
-            }
-        });
+            })
+      );
+});
+function video(message) {
+    if ( request.url.match(/\.(mp4)$/) ) {
+        return;
+        console.log(message);
+    }
 }
-
 
 function debug(message) {
     if (debugMode) {
