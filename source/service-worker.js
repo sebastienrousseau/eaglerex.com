@@ -1,7 +1,7 @@
 ---
 ---
 
-var digest_paths = "/source/assets/icons/icon-192x192.png,/source/assets/icons/icon-256x256.png,/source/assets/icons/icon-384x384.png,/source/assets/icons/icon-512x512.png,/source/assets/images/arrow.svg,/source/assets/backgrounds/bg-about.png,/source/assets/backgrounds/bg-training.png,/source/assets/backgrounds/bg-workouts.png,/source/assets/images/logo-black.min.svg,/source/assets/images/logo-black.svg,/source/assets/images/logo-white.min.svg,/source/assets/images/logo-white.svg,/source/assets/images/manifest.jpg,/source/assets/js/main.js,/source/assets/js/service-worker-setup.js,/source/assets/videos/background.jpg,/source/assets/videos/background.mp4"
+var digest_paths = "/assets/icons/icon-192x192.png,/assets/icons/icon-256x256.png,/assets/icons/icon-384x384.png,/assets/icons/icon-512x512.png,/assets/images/arrow.svg,/assets/backgrounds/bg-about.png,/assets/backgrounds/bg-training.png,/assets/backgrounds/bg-workouts.png,/assets/images/logo-black.min.svg,/assets/images/logo-black.svg,/assets/images/logo-white.min.svg,/assets/images/logo-white.svg,/assets/images/manifest.jpg,/assets/js/main.js,/assets/js/service-worker-setup.js,/assets/videos/background.jpg,/assets/videos/background.mp4"
 var version = "v{{site.time | date: '%Y%m%d%H%M%S'}}-";
 var staticCacheName = version + "assets-" + digest_paths;
 var staticAssets = ['/manifest.json', digest_paths];
