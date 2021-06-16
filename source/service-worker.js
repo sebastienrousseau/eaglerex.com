@@ -1,199 +1,114 @@
 ---
+layout: null
 ---
 
-var version = "v{{site.time | date: '%Y%m%d%H%M%S'}}-";
-var staticCacheName = version + "assets-C8A6B59AACBFCFC343DF31C18D6C5A3F";
-var staticAssets = ['/manifest.json', 'assets/icons/icon-192x192.png','assets/icons/icon-256x256.png','assets/icons/icon-384x384.png','assets/icons/icon-512x512.png','assets/images/arrow.svg','assets/images/backgrounds/bg-about.png','assets/images/backgrounds/bg-training.png','assets/images/backgrounds/bg-workouts.png','assets/images/logo-black.min.svg','assets/images/logo-black.svg','assets/images/logo-white.min.svg','assets/images/logo-white.svg','assets/images/manifest.jpg','assets/js/main.js','assets/js/service-worker-setup.js','assets/videos/background.jpg','assets/videos/background.mp4'];
+'use strict';
 
-var pageCacheName = version + 'pages';
-var offlinePages = ['/', 'api', '/offline/'];
-var currentCaches = [staticCacheName, pageCacheName];
+const cacheVersion = {{'now' | date: '%s' }};
+const offlineCache = 'offline-' + cacheVersion;
+const offlinePage = '/offline.html';
+const debugMode = false;
 
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    Promise.all([
-      cacheAllIn(staticAssets, staticCacheName),
-      cacheAllIn(offlinePages, pageCacheName)
-    ]).then(function() {
-      self.skipWaiting();
-    })
-  );
-});
-
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    deleteOldCaches(currentCaches).then(function() {
-      self.clients.claim();
-    })
-  );
-});
-
-self.addEventListener('fetch', function(event) {
-  var url = new URL(event.request.url);
-  if (url.pathname.match(/^((assets)\/|manifest.json$)/)) {
-    if (event.request.headers.get('range')) {
-      event.respondWith(returnRangeRequest(event.request, staticCacheName));
-    } else {
-      event.respondWith(returnFromCacheOrFetch(event.request, staticCacheName));
-    }
-  } else if (
-    event.request.mode === 'navigate' ||
-    event.request.headers.get('Accept').indexOf('text/html') !== -1
-  ) {
-    // cache then network
-    event.respondWith(cacheThenNetwork(event.request, pageCacheName));
-  }
-});
-
-function returnRangeRequest(request, cacheName) {
-  return caches
-    .open(cacheName)
-    .then(function(cache) {
-      return cache.match(request.url);
-    })
-    .then(function(res) {
-      if (!res) {
-        fetch(request.url)
-          .then(res => {
-            return caches
-              .open(cacheName)
-              .then(cache => cache.put(request, res))
-          });
-        return fetch(request);
-      } else {
-        return res;
-      }
-    })
-    .then(function(res) {
-      if (res.status === 206) {
-        return res;
-      } else {
-        return res.blob();
-      }
-    })
-    .then(function(responseOrBlob) {
-      if (responseOrBlob instanceof Response) {
-        return responseOrBlob;
-      }
-      const bytes = /^bytes\=(\d+)\-(\d+)?$/g.exec(
-        request.headers.get('range')
-      );
-      if (bytes) {
-        const start = Number(bytes[1]);
-        const end = Number(bytes[2]) || responseOrBlob.size - 1;
-        return new Response(responseOrBlob.slice(start, end + 1), {
-          status: 206,
-          statusText: 'Partial Content',
-          headers: [
-            ['Content-Range', `bytes ${start}-${end}/${responseOrBlob.size}`]
-          ]
-        });
-      } else {
-        return new Response(null, {
-          status: 416,
-          statusText: 'Range Not Satisfiable',
-          headers: [['Content-Range', `*/${responseOrBlob.size}`]]
-        });
-      }
+/**
+ * Delete caches that do not match the current version of the service worker.
+ *
+ * @returns {*|Promise.<TResult>}
+ */
+function clearOldCaches() {
+    debug("Clean old caches");
+    return caches.keys().then(keys => {
+        return Promise.all(
+            keys
+                .filter(key => key.indexOf(offlineCache) !== 0)
+                .map(key => caches.delete(key))
+        );
     });
 }
-function cacheAllIn(paths, cacheName) {
-  return caches.open(cacheName).then(function(cache) {
-    return cache.addAll(paths);
-  });
+
+function cacheOfflinePage() {
+    debug("Cache offline page");
+    return caches.open(offlineCache)
+        .then(cache => {
+            return cache.addAll([offlinePage]);
+        })
+        .catch(error => {
+            debug(error);
+        })
 }
-function deleteOldCaches(currentCaches) {
-  return caches.keys().then(function(names) {
-    return Promise.all(
-      names
-        .filter(function(name) {
-          return currentCaches.indexOf(name) === -1;
-        })
-        .map(function(name) {
-          return caches.delete(name);
-        })
+
+/**
+ * Install Service Worker
+ */
+ self.addEventListener('install', event => {
+    debug("Installing Service Worker");
+    event.waitUntil(
+        cacheOfflinePage()
+        .then( () => self.skipWaiting() )
     );
-  });
-}
-function openCacheAndMatchRequest(cacheName, request) {
-  var cachePromise = caches.open(cacheName);
-  var matchPromise = cachePromise.then(function(cache) {
-    return cache.match(request);
-  });
-  return [cachePromise, matchPromise];
-}
+});
 
-function cacheSuccessfulResponse(cache, request, response) {
-  if (response.ok) {
-    return cache.put(request, response.clone()).then(() => {
-      return response;
-    });
-  } else {
-    return response;
-  }
-}
+/**
+ * Activate Service Worker
+ */
+self.addEventListener('activate', event => {
+    debug("Activating Service Worker");
+    event.waitUntil(
+        clearOldCaches()
+            .then(() => self.clients.claim())
+    );
+});
 
-function returnFromCacheOrFetch(request, cacheName) {
-  return Promise.all(openCacheAndMatchRequest(cacheName, request)).then(
-    function(responses) {
-      var cache = responses[0];
-      var cacheResponse = responses[1];
-      // return the cached response if we have it, otherwise the result of the fetch.
-      return (
-        cacheResponse ||
-        fetch(request).then(function(fetchResponse) {
-          // Cache the updated file and then return the response
-          cacheSuccessfulResponse(cache, request, fetchResponse);
-          return fetchResponse;
-        })
+self.addEventListener('fetch', event => {
+    let request = event.request;
+
+    // Ignore non-GET requests
+    if ( request.method !== 'GET' ) {
+        return;
+    }
+
+    // Ignore video requests because of Safari's range bug https://philna.sh/blog/2018/10/23/service-workers-beware-safaris-range-request/
+    if ( request.url.match(/\.(mp4)$/) ) {
+        return;
+    }
+
+    event.respondWith(
+        caches.match(request)
+            .then(response => {
+                // CACHE
+                debug("Fetching " + request.url)
+
+                if (response) {
+                    debug("Found in cache: " + request.url);
+                }
+
+                return response || fetch(request)
+                    .then( response => {
+                        // NETWORK
+                        debug("Going to network: " + request.url);
+                        if (response && response.ok) {
+                            debug("Saving in cache: " + request.url);
+                            let copy = response.clone();
+                            caches.open(offlineCache)
+                                .then( cache => cache.put(request, copy) );
+                        }
+                        return response;
+                    })
+                    .catch( error => {
+                        // OFFLINE
+                        debug("Offline and no cache for: " + request.url + ": " + error);
+                        if (request.mode == 'navigate') {
+                            debug("Showing offline page")
+                            return caches.match(offlinePage);
+                        } else if (request.headers.get('Accept').indexOf('image') !== -1) {
+                            return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Helvetica Neue,Arial,Helvetica,sans-serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {headers: {'Content-Type': 'image/svg+xml'}});
+                        }
+                    });
+            })
       );
-    }
-  );
-}
+});
 
-function cacheThenNetwork(request, cacheName) {
-  return Promise.all(openCacheAndMatchRequest(cacheName, request)).then(
-    function(responses) {
-      var cache = responses[0];
-      var cacheResponse = responses[1];
-      if (cacheResponse) {
-        // If it's in the cache then start a fetch to update the cache, but
-        // return the cached response
-        fetch(request)
-          .then(function(fetchResponse) {
-            return cacheSuccessfulResponse(cache, request, fetchResponse);
-          })
-          .then(refresh)
-          .catch(function(err) {
-            // Offline/network failure, but nothing to worry about
-          });
-        return cacheResponse;
-      } else {
-        // If it's not in the cache then start a fetch
-        return fetch(request)
-          .then(function(fetchResponse) {
-            cacheSuccessfulResponse(cache, request, fetchResponse);
-            return fetchResponse;
-          })
-          .catch(function() {
-            // Offline, so return the offline page.
-            return caches.match('/offline/');
-          });
-      }
+function debug(message) {
+    if (debugMode) {
+        console.log(message);
     }
-  );
-}
-function refresh(response) {
-  return self.clients.matchAll().then(function(clients) {
-    if (response.headers.get('Content-Type').indexOf('text/html') !== -1) {
-      clients.forEach(function(client) {
-        var message = {
-          type: 'refresh',
-          url: response.url,
-          eTag: response.headers.get('ETag')
-        };
-        client.postMessage(JSON.stringify(message));
-      });
-    }
-  });
 }
