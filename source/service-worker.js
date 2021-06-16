@@ -1,12 +1,10 @@
 ---
 ---
 
-{% capture digest_paths %}{% for asset in assets %}{% unless asset[0] contains "/" %}{% unless asset[0] contains "merriweather" %}{% unless asset[0] contains "raleway" %}{% unless asset[0] contains "package" %}{{ asset[1].digest_path }},{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endfor %}{% endcapture %}
-
-var version = "v{{ site.sw_cache_version }}-";
-
-var staticCacheName = version + "assets-{{ digest_paths | md5 }}";
-var staticAssets = ['/manifest.json', '{{ digest_paths | split: "," | join: "', '" }}'];
+var digest_paths = "/source/assets/icons/icon-192x192.png,/source/assets/icons/icon-256x256.png,/source/assets/icons/icon-384x384.png,/source/assets/icons/icon-512x512.png,/source/assets/images/arrow.svg,/source/assets/backgrounds/bg-about.png,/source/assets/backgrounds/bg-training.png,/source/assets/backgrounds/bg-workouts.png,/source/assets/images/logo-black.min.svg,/source/assets/images/logo-black.svg,/source/assets/images/logo-white.min.svg,/source/assets/images/logo-white.svg,/source/assets/images/manifest.jpg,/source/assets/js/main.js,/source/assets/js/service-worker-setup.js,/source/assets/videos/background.jpg,/source/assets/videos/background.mp4"
+var version = "v{{site.time | date: '%Y%m%d%H%M%S'}}-";
+var staticCacheName = version + "assets-" + md5(digest_paths);
+var staticAssets = ['/manifest.json', digest_paths];
 
 var pageCacheName = version + 'pages';
 var offlinePages = ['/', 'api', '/offline/'];

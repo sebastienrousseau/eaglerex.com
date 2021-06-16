@@ -7,9 +7,8 @@ assets:
     css: /assets/styles/*.css
     img: /assets/**/*.{jpg,png}
     js: /assets/js/*.js
-    video: /assets/videos/*.{mp4}
   compression: true
-  gzip: true
+  gzip: false
   plugins:
     css:
       autoprefixer: {}
