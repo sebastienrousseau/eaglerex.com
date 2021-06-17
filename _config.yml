@@ -8,20 +8,24 @@ assets:
     img: /assets/**/*.{jpg,png}
     js: /assets/js/*.js
   compression: true
-  gzip: false
+  gzip:
+   - text/css
+   - application/javascript
   plugins:
     css:
       autoprefixer: {}
     img:
       optim: {}
   source_maps: false
+  precompile: []
+  raw_precompile: [
+    #
+  ]  
   sources:
-    - assets/fonts
     - assets/icons
     - assets/images
     - assets/videos
-    - assets/javascripts
-    - assets/stylesheets
+    - assets/js
 author: Sebastian Rousseau
 author_facebook: eaglerex
 background_color: '#fff'
@@ -73,7 +77,6 @@ github_username: sebastienrousseau
 google_analytics: G-X7J1L6Q2D2
 highlighter: rouge
 include:
-  - .htaccess
   - assets
   - _pages
 jekyll-minifier:
