@@ -3,14 +3,14 @@
 source "https://rubygems.org"
 
 gem "html-proofer"
-gem "image_optim"
 gem "image_optim_pack" # Optional
+gem "image_optim"
 gem "jekyll"
 gem "liquid-c"
 gem "webrick"
 
 group :jekyll_plugins do
-  gem 'jekyll-workbox-plugin'
+  gem "jekyll-workbox-plugin"
   gem "jekyll-assets"
   gem "jekyll-feed"
   gem "jekyll-include-cache"
