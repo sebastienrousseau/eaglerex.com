@@ -1,39 +1,26 @@
-workbox:
-  sw_src_filepath: sw.js # Optional
-  sw_dest_filename: sw.js # Optional
-  dest_js_directory: assets/js # Required
-  precache_recent_posts_num: 5 # Optional
-  precache_glob_directory: / # Optional
-  precache_glob_patterns: # Optional
-    - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
-    - index.html
-  precache_glob_ignores: # Optional
-    - "assets/videos/**/*"
-    - sw-register.js
 assets:
   caching:
     enabled: true
     path: .jekyll-cache/assets
     type: file
   compress:
-    css: /assets/styles/*.css
+    css: /assets/css/*.css
     img: /assets/**/*.{jpg,png}
     js: /assets/js/*.js
   compression: true
   gzip:
-   - text/css
-   - application/javascript
+    - text/css
+    - application/javascript
   plugins:
     css:
       autoprefixer: {}
     img:
       optim: {}
-  source_maps: false
   precompile: []
-  raw_precompile: [
-    #
-  ]  
+  raw_precompile: []
+  source_maps: false
   sources:
+    - assets/css
     - assets/icons
     - assets/images
     - assets/videos
@@ -92,10 +79,10 @@ include:
   - assets
   - _pages
 jekyll-minifier:
+  keep_files:
+    - .git
   uglifier_args:
     harmony: true
-  keep_files:
-  - .git
 kramdown:
   auto_ids: true
   enable_coderay: false
@@ -117,7 +104,11 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 repository: sebastienrousseau/eaglerex.com
+sass:
+  sass_dir: _scss
+  style: compressed
 source: source
+styles: /assets/css/main.css
 subtitle: Dare to Soar
 theme-color: '#000'
 title: Eagle Rex Cycling Club
@@ -125,3 +116,15 @@ twitter_creator: wwdseb
 twitter_username: eaglerex
 url: https://eaglerex.com
 version: 1.0.5
+workbox:
+  dest_js_directory: assets/js
+  precache_glob_directory: /
+  precache_glob_ignores:
+    - assets/videos/**/*
+    - sw-register.js
+  precache_glob_patterns:
+    - '{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}'
+    - index.html
+  precache_recent_posts_num: 5
+  sw_dest_filename: sw.js
+  sw_src_filepath: sw.js
