@@ -67,9 +67,9 @@ self.addEventListener('fetch', event => {
     }
 
     // Ignore video requests because of Safari's range bug https://philna.sh/blog/2018/10/23/service-workers-beware-safaris-range-request/
-    if ( request.url.match(/\.(mp4)$/) ) {
-        return;
-    }
+    //if ( request.url.match(/\.(mp4)$/) ) {
+      //  return;
+    //}
 
     event.respondWith(
         caches.match(request)
