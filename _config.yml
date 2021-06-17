@@ -1,3 +1,15 @@
+workbox:
+  sw_src_filepath: sw.js # Optional
+  sw_dest_filename: sw.js # Optional
+  dest_js_directory: assets/js # Required
+  precache_recent_posts_num: 5 # Optional
+  precache_glob_directory: / # Optional
+  precache_glob_patterns: # Optional
+    - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
+    - index.html
+  precache_glob_ignores: # Optional
+    - "assets/videos/**/*"
+    - sw-register.js
 assets:
   caching:
     enabled: true
@@ -112,4 +124,4 @@ title: Eagle Rex Cycling Club
 twitter_creator: wwdseb
 twitter_username: eaglerex
 url: https://eaglerex.com
-version: 1.0.4
+version: 1.0.5

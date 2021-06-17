@@ -10,6 +10,7 @@ gem "liquid-c"
 gem "webrick"
 
 group :jekyll_plugins do
+  gem 'jekyll-workbox-plugin'
   gem "jekyll-assets"
   gem "jekyll-feed"
   gem "jekyll-include-cache"
