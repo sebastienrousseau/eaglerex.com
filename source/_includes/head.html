@@ -10,12 +10,11 @@
     
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self' data: gap: ssl.gstatic.com
-              unpkg.com open-sans.com ajax.cloudflare.com
-              'unsafe-eval';
+          content="default-src 'self' data: blob: gap: ssl.gstatic.com
+              unpkg.com open-sans.com ajax.cloudflare.com unpkg.com ajax.cloudflare.com videodelivery.net
+              'unsafe-inline' 'unsafe-eval';
               style-src 'self' unpkg.com open-sans.com 'unsafe-inline';
-              script-src 'self' unpkg.com ajax.cloudflare.com 'unsafe-inline';
-              media-src *">
+              ">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
 
